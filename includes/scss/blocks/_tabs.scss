@@ -1,0 +1,48 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Tabs  Block
+/*-----------------------------------------------------------------------------------*/
+.tabHolder {
+    position: relative;
+
+    .tabs {
+
+        ul {
+            border: none;
+
+          @include MQ(SM) {
+            display: block;
+          }
+        }
+
+        li {
+            background: transparent;
+            border-bottom: solid 1px $color-1;
+            padding: 10px 15px;
+            font-size: 1rem;
+            margin-right: 15px;
+
+             a {
+                padding: 0px;
+                border: none;
+            }
+
+            &:hover {
+                transition: $transition-regular;
+            }
+
+            &.is-active a {
+                color: inherit;
+                font-weight: $Bold;
+            }
+        }
+    }
+
+.tab-content  {
+		display: none;
+
+	&.is-active {
+			display: block;
+	}
+
+  }
+}

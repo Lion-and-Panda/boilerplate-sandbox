@@ -1,0 +1,65 @@
+/*-----------------------------------------------------------------------------------*/
+/* Buttons
+/*-----------------------------------------------------------------------------------*/
+
+.button {
+	transition: $transition-regular;
+  background: transparent !important;
+  border-width: 2px;
+  border-color: $black;
+	font-family:  $primary-font;
+  color:  $black;
+  font-weight: $Bold;
+  padding: 8px 30px !important;
+  font-size: .8rem;
+  text-transform: uppercase;
+  border-radius: 20px;
+
+	&:hover {
+		cursor: pointer;
+    border-color: $black !important;
+		transform: translateY(-2px);
+		box-shadow: $box-shadow;
+	}
+
+	&//Button sizes
+	.smallBTN {
+		padding: $small-button-padding !important;
+		font-size: $small-button-font !important;
+		border-radius: $small-button-radius !important;
+	}
+	&.mediumBTN {
+		padding: $medium-button-padding !important;
+		font-size: $medium-button-font !important;
+		border-radius: $medium-button-radius !important;
+	}
+	&.largeBTN {
+		padding: $large-button-padding !important;
+		font-size: $large-button-font !important;
+		border-radius: $large-button-radius !important;
+	}
+
+}
+
+.buttonHolder {
+	margin-top: 20px;
+}
+
+//inverted button
+.inverted {
+    .button {
+        background: $white !important;
+        color: $font-color !important;
+        border-color: $white !important;
+
+        &:hover {
+            background: $white-darken !important;
+        }
+    }
+}
+
+
+//form Buttons
+input[type=submit] {
+	line-height: 1rem;
+}

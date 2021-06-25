@@ -1,0 +1,54 @@
+// reset
+@import 'utilities/reset';
+
+// Bulma Framework. Load bulma first so we can override where needed
+@import "../bulma/sass/utilities/_all",
+        "../bulma/sass/base/_all",
+        "../bulma/sass/elements/_all",
+        "../bulma/sass/components/_all",
+        "../bulma/sass/grid/_all",
+         "../bulma/sass/layout/_all";
+
+// utilites
+@import 'utilities/layout',
+        'utilities/variables',
+        'utilities/mixins',
+        'utilities/functions';
+
+// base
+@import 'base/base',
+        'base/header',
+        'base/navmobile',
+        'base/footer',
+        'base/blog',
+        'base/media-queries';
+
+
+// font styles
+@import 'font/fontawesome/fontawesome',
+        'font/fontawesome/fa-solid',
+        'font/fontawesome/fa-brands',
+        'font/typography';
+
+// components
+@import 'components/button',
+        'components/forms',
+        'components/tables',
+        'components/plugins';
+
+// Custom gutenburg block styles
+@import 'blocks/accordion',
+        'blocks/contentblock',
+        'blocks/cta',
+        'blocks/featuredcolumns',
+        'blocks/testimonials',
+        'blocks/hero',
+        'blocks/pagetitle',
+        'blocks/recentposts',
+        'blocks/slider',
+        'blocks/logo-slider',
+        'blocks/steps',
+        'blocks/tabs',
+        'blocks/vi-copy',
+        'blocks/video',
+        'blocks/video-image-gallery';

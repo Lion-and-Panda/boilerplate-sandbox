@@ -1,0 +1,204 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Typography
+/*-----------------------------------------------------------------------------------*/
+
+// global links
+a {
+  color: $font-color;
+  transition: $transition-fast;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: rgba($color-1,.8);
+  }
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+// paragraph
+p {
+	font: 100 16px/25px $primary-font;
+	letter-spacing: 0;
+	color: $font-color;
+  font-weight: $Regular;
+
+  // links in text
+  a {
+    color: $font-color;
+    font-weight: $Semibold;
+    text-decoration: underline;
+    text-decoration-color: $primary-color-darken;
+    text-decoration-thickness: .15em;
+    text-underline-offset: 1.5px;
+
+    &:hover {
+      color: $font-color;
+      text-decoration: underline;
+      text-decoration-color: $primary-color-lighten;
+      text-decoration-thickness: .15em;
+      text-underline-offset: 1.5px;
+      outline: none;
+    }
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+}
+
+// a paragraph proceeded by another paragraph will have a top margin */
+p + p {
+    margin-top: 15px;
+}
+
+// headings
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 20px 0;
+    color: $font-color;
+    font-family: $headline-font;
+    text-transform: none;
+    line-height: 1em;
+        &.uppercase {
+            text-transform: uppercase;
+        }
+        &.caps {
+            text-transform: capitalize;
+        }
+        &.light {
+            font-weight: $Light;
+        }
+        &.regular {
+            font-weight: $Regular;
+        }
+        &.semibold {
+            font-weight: $Semibold;
+        }
+        &.bold {
+            font-weight: $Bold;
+        }
+        &.black {
+            font-weight: $Black;
+        }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $Bold;
+}
+
+h1 {
+  font-size: 2.25rem;
+  	@include MQ(SM) {
+    font-size: 1.75rem !important;
+   }
+}
+
+h2 {
+  font-size: 1.5em;
+  @include MQ(SM) {
+  font-size: 1.5rem !important;
+ }
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+h5 {
+    font-size: .9em;
+}
+h6 {
+    font-size: .8em;
+}
+
+// add this class to h2 or other headings you want to be as big as an h1 without breaking seo rule of only one h1 on page
+.headingLarge {
+  @extend h1;
+}
+
+// lists
+ol, ul {
+    margin:0;
+    padding: 0;
+  	font: 100 16px/32px $primary-font;
+  	color: $font-color;
+}
+
+// highlighted text selections
+::selection {
+    background: lighten($black,80%);
+    color: #fff;
+}
+::-moz-selection {
+    background: lighten($black,80%);
+    color: #fff;
+}
+
+// typography extras
+hr {
+    height: 1px;
+    margin: 20px auto;
+    border: 0;
+    width: 100%;
+    border-top: 1px solid rgba(black,.1);
+}
+
+em {
+	font-style: italic;
+}
+
+strong, b  {
+	font-weight: $Bold;
+}
+
+blockquote {
+	background-color: rgba($color-1,.1);
+	padding: 20px;
+	margin: 20px 0px;
+
+	&::before {
+		content: '"';
+		font-family: $headline-font;
+		font-size: 4rem;
+		line-height: 2rem;
+		color: white;
+		float: left;
+		margin-right: 15px;
+	}
+
+	cite {
+		font-size: .8rem;
+	}
+
+}
+
+.has-drop-cap {
+
+    &::first-letter {
+        color: $color-1;
+        font-family: $headline-font;
+    }
+}
+
+//font awsome icons
+.fal {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 300;
+}
+
+// align helpers
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}

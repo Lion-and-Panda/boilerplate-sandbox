@@ -1,0 +1,118 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Recent Posts Block
+/*-----------------------------------------------------------------------------------*/
+.recentPosts {
+	@include coverBackgound;
+
+    .postTags {
+        margin-bottom: 5px;
+
+        ul {
+            margin-left: 0px !important;
+            margin-bottom: 0px !important;
+
+            li {
+                background: $color-3;
+                text-transform: uppercase;
+                font-size: .5rem;
+                line-height: 1rem;
+                padding: 5px 10px;
+                border-radius: 5px;
+                display: inline-block;
+                margin-right: 10px;
+
+                a {
+                     color: $font-color;
+                }
+            }
+        }
+    }
+}
+
+.postImg {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+.postExcerpt {
+	overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+	margin-bottom: 20px;
+}
+
+.postBlock {
+
+  .blog-feature {
+      overflow: hidden;
+      height: 225px;
+
+      img {
+          width: 100%;
+          height: 225px;
+          object-fit: cover;
+          overflow: hidden;
+          transition: all 0.7s ease;
+
+      }
+        }
+
+      .postContent {
+          padding: 5px 15px 15px 15px;
+
+          .postDate {
+              p {
+                  font-weight: $Semibold;
+                  font-size: .9rem;
+                  line-height: 1rem;
+                  color: rgba($font-color,.75);
+              }
+          }
+
+          .post-header {
+              h3 {
+                  font-size: 1.25rem;
+                  line-height: 1.5rem;
+                  font-weight: $Bold;
+                  margin-bottom: 10px;
+
+                  a {
+                      color: $font-color;
+                      &:hover {
+                        color: rgba($font-color,.8);
+                      }
+                  }
+
+              }
+          }
+
+          .post-section {
+
+              p {
+              	font-size: .9rem;
+                line-height: 1.1rem;
+              }
+          }
+
+          .entry-content{
+              a {
+                  background: transparent;
+                  @include transition (all 0.4s ease-in-out);
+                  text-decoration: none;
+
+                  &:hover {
+                      text-decoration: none;
+                      background: rgba($color-1,.6);
+                      cursor: pointer;
+                  }
+              }
+          }
+      }
+        &:hover {
+            .blog-feature img {
+                transform: scale(1.05);
+            }
+        }
+    }

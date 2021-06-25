@@ -1,0 +1,200 @@
+#lpbp-menu-trigger {
+	flex-grow: 100;
+  text-align: right;
+  font-size: 1.5rem;
+}
+
+#lpbp-lateral-nav {
+	position: fixed;
+	height: 100%;
+	right: 0;
+	top: 0;
+	visibility: hidden;
+	/* the secondary navigation is covered by the main element */
+	z-index: 94;
+	width: 300px;
+	background-color: $black;
+	overflow-y: auto;
+	/* Force Hardware Acceleration in WebKit */
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: -webkit-transform .4s 0s, visibility 0s .4s;
+	-moz-transition: -moz-transform .4s 0s, visibility 0s .4s;
+	transition: transform .4s 0s, visibility 0s .4s;
+	/* this creates the subtle slide in animation of the navigation */
+	@include transform(translateX(300px));
+
+//closing button
+	.closing-time {
+			background: lighten($black, 30%);
+			a {
+				font-size: 1.5rem;
+				color: $primary-color;
+			}
+}
+
+	// search bar in mobile menu overlay
+		.mobileSearch input[type="search"] {
+			padding: 5px;
+			border: none;
+			width: 100%;
+			background: $primary-color-darken;
+			border-radius: 0px;
+			color: $black;
+
+			&::placeholder {
+				font-family: $FontAwesome;
+				font-display: swap;
+				font-weight: 900;
+				color: $black;
+			}
+	}
+
+	.meta-meta {
+		padding:1rem 0 0 1.5rem;
+		display: inline-block;
+		li {
+			float: left;
+			color: #fff;
+			display: flex;
+			a {
+				padding: 3px;
+				opacity: .6;
+				line-height: 3.2em;
+				padding: 0px 7px 0px 7px;
+				font-size: 13px;
+				&:hover {
+					opacity: 1;
+					text-decoration: underline;
+				}
+			}
+			&:after {
+				content: "|";
+				color: #fff;
+				opacity: .5;
+				display: block;
+				padding-top: 5px;
+			}
+			&:last-child {
+				&:after {
+					content: '';
+				}
+			}
+		}
+	}
+
+	h4 {
+		font-size: 1.25rem;
+		font-weight: $Bold;
+		padding: 1.5rem 0 0 1.5rem;
+		color: #fff;
+	}
+
+	.lpbp-navigation {
+		margin: 10px 0 16px;
+		@include MQ(M) {
+		    margin: 10px 0;
+		}
+	}
+
+	.sub-menu {
+		padding: 0 10px 20px 15px;
+		display: none;
+	}
+
+	hr {
+		border: 0px none;
+		background-color: lighten($black, 30%);;
+		margin: 0 1.5rem;
+		height: 6px;
+		width: auto;
+	}
+
+	a {
+		display: block;
+		text-transform: uppercase;
+		font-weight: $Light;
+		font-size: 1rem;
+		line-height: 1.5em;
+		padding: 10px 16px 10px 32px;
+		color:$white-darken;
+		transition: $transition-regular;
+
+		&:hover {
+			color: $white;
+			transition: $transition-regular;
+		}
+	}
+
+	.current-menu-item {
+		a {
+			background-color: $black-lighten;
+			color: $primary-color;
+			font-weight: $Bold;
+		}
+	}
+
+	.socialcons {
+		text-align: left;
+		li {
+			display: inline-block;
+			a {
+				padding: 10px;
+			}
+			a, i, svg {
+				font-size: 1.75rem !important;
+			}
+			&:first-of-type {
+				a {padding-left: 32px;}
+			}
+		}
+	}
+
+	.email, .phoneNum {
+		a {
+			font-size: .9rem;
+			line-height: 1rem;
+			color: $white-darken !important;
+			text-transform: unset;
+		}
+	}
+
+	&.lateral-menu-is-open {
+		@include transform(translateX(0));
+		visibility: visible;
+		-webkit-transition: -webkit-transform .4s 0s, visibility 0s 0s;
+		-moz-transition: -moz-transform .4s 0s, visibility 0s 0s;
+		transition: transform .4s 0s, visibility 0s 0s;
+		/* smooth the scrolling on touch devices - webkit browsers */
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+/* style menu items which have a submenu  */
+#lpbp-lateral-nav .menu-item-has-children > a {
+	position: relative;
+	text-transform: uppercase;
+	font-weight: 600;
+
+	&:after {
+		transition: all 0.6s ease-in-out;
+		display: inline-block;
+		font-style: normal;
+		font-variant: normal;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		font-family: $FontAwesome;
+		font-weight: 900;
+		position: absolute;
+		right: 1em;
+		content: "\f067";
+		//transform: translate(1em, 0);
+		@include transition-property(transform);
+		color: $primary-color;
+	}
+
+	&.submenu-open:after {
+		@include transform(rotate(45deg));
+
+	}
+}

@@ -1,0 +1,23 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "dev.lionandpanda.com",
+  "target": "/var/www/vhosts/lionandpanda.com/boilerplate.lionandpanda.com/wp-content/themes/lpboilerplate",
+  "ignore": [
+    ".remote-sync.json",
+    ".git",
+    "local.sql"
+  ],
+  "username": "lionandpanda",
+  "keyfile": "C:\\Users\\lehus\\OneDrive\\Documents\\private.ppk",
+  "watch": [
+    "/includes/css/app.css",
+    "/includes/css/app.css.map",
+    "/includes/css/app.min.css"
+  ],
+  "transport": "scp"
+}

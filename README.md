@@ -1,1 +1,1 @@
-"# boilerplate-sandbox" 
+"# boilerplate-theme" 

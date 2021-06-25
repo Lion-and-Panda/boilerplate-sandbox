@@ -1,0 +1,53 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Testimonials Block
+/*-----------------------------------------------------------------------------------*/
+.testimonials {
+
+	.testimonial {
+		padding: 40px;
+		margin-bottom:30px;
+	}
+
+	.headshot {
+		width: 150px;
+		height: 150px;
+		display: block;
+		margin: auto;
+
+		img {
+			height: 100%;
+			width: 100%;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+	}
+
+	.body-copy {
+		p {
+			font-size: 1.5rem;
+			line-height: 1.76rem;
+			font-family: $headline-font;
+
+			@include MQ(SM) {
+				font-size: .9rem;
+				line-height: 1rem;
+			}
+
+			&:before {
+				content: open-quote;
+				font-size: 3rem;
+				margin-right: 10px;
+			}
+			&:after {
+				content: close-quote;
+			}
+		}
+	}
+
+	.byline {
+		margin-top: 15px;
+		span {
+			font-weight: $Bold;
+		}
+	}
+}

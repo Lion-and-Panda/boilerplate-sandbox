@@ -1,0 +1,205 @@
+/*-----------------------------------------------------------------------------------*/
+/* Header
+/*-----------------------------------------------------------------------------------*/
+header {
+		padding: 15px 0px;
+    box-shadow: $box-shadow;
+		position: relative;
+		background: $white;
+
+		@include MQ(SM) {
+			padding: 5px 0px;
+		}
+
+		&.headerMain {
+			position: fixed;
+			z-index: 92;
+			top: 0;
+			left: 0;
+			width: 100%;
+			/* Force Hardware Acceleration */
+			transform: translateZ(0);
+			will-change: transform;
+			transition: transform .5s;
+			&.is-hidden-nav {
+				transform: translateY(-100%);
+			}
+
+			#mainNavbar {
+				a {
+					color: $font-color;
+
+					&:before {
+						content: "";
+				    position: absolute;
+				    width: 100%;
+				    height: 2px;
+				    bottom: 0;
+				    left: 0;
+				    background-color: $primary-color-darken;
+				    visibility: hidden;
+				    transform: scaleX(0);
+				    transition: all 0.3s ease-in-out 0s;
+					}
+
+					&:hover {
+						color: $font-color;
+
+						&:before {
+							visibility: visible;
+    					transform: scaleX(1);
+						}
+					}
+
+				}
+
+				// dropwdown menu (desktop)
+				.navbar-dropdown {
+					background: $black;
+					visibility: hidden;
+					opacity: 0;
+					height: 1px;
+
+					a.navbar-item {
+						color: $white;
+						border-bottom: dotted .5px lighten($black,40%);
+
+						&:before {
+							display: none;
+						}
+
+						&:hover {
+							color: $primary-color-lighten;
+						}
+						&:last-of-type {
+							border-bottom: none;
+						}
+					}
+
+					&.is-open {
+						visibility: visible;
+						opacity: 1;
+						height: auto;
+						transition: $transition-fast;
+						pointer-events: auto;
+    				transform: translateY(0);
+					}
+				}
+
+			}
+		}
+
+    //logo
+		.navbar-brand {
+			align-items: center; // centers logo vertically
+
+      a {
+        height: 25px; // prevents height of link off centering the logo
+				width: 100%; // fixes missing logo in firefox
+
+				&:focus {
+					opacity: .75;
+				}
+      }
+		}
+
+    // search box, phone number, and social media icons
+		.menuIcons {
+		text-align: right; // moves icons in the header to the right edge
+
+		  .socialIcons, .topSearch, .phoneNum {
+			  display: inline-block;
+		  }
+
+			.topSearch input[type="search"] {
+					padding: 5px;
+					width: 50px;
+					height: 30px;
+					border: none;
+					border-radius: 10px;
+					transition: all .25s ease-in-out;
+					background: transparent;
+					padding: 5px !important;
+
+					&::placeholder {
+						font-family: $FontAwesome;
+						font-weight: 900;
+						font-display: swap;
+						color: $black;
+					}
+
+					&:focus {
+						background: rgba(black,.05);
+						outline: none;
+						width: 100px;
+						transition: all .25s ease-in-out;
+					}
+				}
+
+          .socialIcons {
+
+  			  li {
+  				  display: inline-block;
+  				  margin-right: 10px;
+
+  				  &:last-child {
+  					  margin-right: 0px;
+  				  }
+
+					  a:hover, a:focus {
+						  opacity: .5;
+					  }
+  				  }
+		  }
+
+      .phoneNum {
+        margin-right: 10px;
+      }
+	}
+
+  // hamburger menu icon
+  .navbar-burger {
+        color: $black-lighten;
+        font-size: 1.5rem;
+        text-align: right;
+
+		&:hover {
+			opacity: .5;
+			background: transparent;
+		}
+
+		&:focus {
+			outline: none;
+		}
+}
+
+} // end header
+
+// prevent WP admin bar from covering fixed header when logged in
+body.admin-bar {
+	header.headerMain {
+		margin-top: 32px;
+	}
+}
+
+// change bulma's default dropdown carrot
+.navbar-link:not(.is-arrowless)::after, {
+	border-color: $font-color;
+}
+
+//fix navbar dropdown in Edge
+.navbar-item.is-hoverable:hover .navbar-dropdown.is-boxed {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+//fix bulmas default white background on nav links on is-hover
+a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
+	background: transparent !important;
+}
+
+//fix menu items getting a white backgroun on hover
+.navbar-item.has-dropdown:focus .navbar-link, .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
+	background-color: $transparent !important;
+}

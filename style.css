@@ -1,0 +1,14 @@
+/*
+Theme Name: LP Boilerplate theme by Lion + Panda
+Theme URI: https://www.lionandpanda.com
+Description: A good starting point for a theme that includes ACF, custom gutenburg blocks, and bulma.
+Author: Lion + Panda
+Author URI: https://www.lionandpanda.com
+Version: 1.0
+Tags:
+License: GNU General Public License v2.0 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+@import './includes/css/app.css';
+/*@import './includes/css/app.min.css';*/

@@ -1,0 +1,34 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Accordian Block
+/*-----------------------------------------------------------------------------------*/
+.accordion {
+
+.card {
+    background: transparent;
+    box-shadow: none;
+
+	.card-header {
+    box-shadow: none;
+    border-bottom: solid 1px $color-1;
+
+		h4 {
+			margin: 0px;
+      padding-left: 0px;
+			font-size: .9rem;
+		}
+
+    .card-header-icon {
+      padding: 0 0.75rem;
+    }
+
+    &.open {
+      .card-header-icon {
+        transform: rotate(180deg);
+        transition: all 0.25s ease-in-out;
+      }
+    }
+	}
+
+}
+
+}

@@ -1,0 +1,159 @@
+{
+    "key": "group_5d112671c0aae",
+    "title": "Page Titles",
+    "fields": [
+        {
+            "key": "field_5d1057a10168d",
+            "label": "Background Color",
+            "name": "pagetitle_background_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#f2f2f2"
+        },
+        {
+            "key": "field_5d1058a5e5586",
+            "label": "Headline Color",
+            "name": "pagetitle_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#999999"
+        },
+        {
+            "key": "field_5d111ae944075",
+            "label": "Title Text Alignment",
+            "name": "title_content_alignment",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "24",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Left",
+                "right": "Right",
+                "center": "Center"
+            },
+            "default_value": [
+                "left"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5d111b2644076",
+            "label": "Title Text Size",
+            "name": "title_text_size",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "24",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "1.5",
+            "placeholder": "",
+            "prepend": "",
+            "append": "rem",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5d111d9a5bbd1",
+            "label": "Title Text Weight",
+            "name": "title_text_weight",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "24",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "300": "Light",
+                "400": "Regular",
+                "700": "Bold",
+                "900": "Black"
+            },
+            "default_value": [
+                400
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5d111f60c3a27",
+            "label": "Title Text Transform",
+            "name": "title_text_transform",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "24",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "None",
+                "uppercase": "Uppercase"
+            },
+            "default_value": [
+                "None"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "global-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 5,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1610563462
+}

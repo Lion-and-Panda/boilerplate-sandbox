@@ -1,0 +1,77 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Variables
+/*-----------------------------------------------------------------------------------*/
+
+// colors
+$primary-color: #fade6c;
+$primary-color-darken: darken($primary-color, 10%);
+$primary-color-lighten: lighten($primary-color, 10%);
+
+$color-1: #fade6c; //
+$color-2: #5a5a5a; //
+$color-3: #5a5a5a; //
+$color-4: #5a5a5a; //
+$color-5: #5a5a5a; //
+$color-6: #5a5a5a; //
+$color-7: #5a5a5a; //
+$color-8: #5a5a5a; //
+
+$font-color: $black; // body text color
+
+$white: #fff;
+$black: #000;
+$transparent: rgba(255,255,255,0);
+
+// darken and lighten colors
+$white-darken: darken($white, 10%);
+$black-lighten: lighten($black, 20%);
+
+// Fonts
+$FontAwesome: 'Font Awesome 5 Pro';
+$primary-font: 'neuzeit-grotesk', sans-serif;
+$headline-font:	'span', serif;
+
+// font weights
+$Light: 300;
+$Regular: 400;
+$Semibold: 700;
+$Bold: 700;
+$Black: 900;
+
+// Container width
+$container-width: 80%;
+$container-max-width: 1600px;
+
+//Padding - inside spacing of blocks
+$padding-flat: 0px;
+$padding-small: 50px 0px;
+$padding-medium: 150px 0px;
+$padding-large: 200px 0px;
+
+//Margin - outside spacing of blocks
+$margin-flat: 0px auto;
+$margin-small: 25px auto;
+$margin-medium: 60px auto;
+$margin-large: 100px auto;
+
+//Small buttons
+$small-button-padding: 5px 20px;
+$small-button-font: .8rem;
+$small-button-radius: 10px;
+
+//Medium Buttons
+$medium-button-padding: 8px 30px;
+$medium-button-font: 1rem;
+$medium-button-radius: 15px;
+
+//Large Buttons
+$large-button-padding: 15px 40px;
+$large-button-font: 1.5rem;
+$large-button-radius: 20px;
+
+// global effects
+$box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+$animation-duration: 0.5s;
+$transition-fast: all 0.25s ease-in-out;
+$transition-regular: all 0.5s ease-in-out;
+$transition-slow: all 1s ease-in-out;

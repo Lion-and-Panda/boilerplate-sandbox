@@ -1,0 +1,65 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Tables
+/*-----------------------------------------------------------------------------------*/
+table {
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	border: 1px solid $color-1;
+  border-collapse: collapse;
+  background: $color-3;
+
+	h2 {
+		margin-bottom: 0px;
+	}
+
+	tfoot tr th,
+	thead tr th {
+		background-color: $color-3;
+	  font-size: 21px;
+		color: $font-color;
+		text-align: left;
+		font-weight: $Semibold;
+		padding: 8px;
+	}
+
+	> tbody > tr {
+		td, th {
+			color: $font-color;
+			padding: 10px;
+		    font-size: 14px;
+			line-height: 1.42857143;
+			vertical-align: top;
+			border-top: 1px solid $color-1;
+			border-right: 1px solid $color-1;
+			a {
+				font-weight: $Semibold;
+				//border-bottom: 1px solid $$color-4;
+				i {
+					color: $color-4;
+					padding-right: 10px;
+				}
+
+			}
+		}
+		&:nth-of-type(odd) {
+			background-color: white;
+  		}
+		&:nth-of-type(even) {
+			background-color: rgba(black,.1);
+  		}
+	}
+
+	.label {
+		color: white;
+		padding: 0px 6px 3px;
+	}
+
+	&.container { //get rid of strange extra line
+		&::after {
+			height: 0px;
+			content: none;
+		}
+	}
+
+}

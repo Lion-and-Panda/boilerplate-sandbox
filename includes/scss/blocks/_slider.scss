@@ -1,0 +1,108 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Slider Block
+/*-----------------------------------------------------------------------------------*/
+.slide {
+    @include coverBackgound;
+
+	.buttonHolder {
+		height: 75px;
+	}
+}
+
+#slider {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 0 auto;
+  border-radius: 4px;
+
+	ul {
+	  position: relative;
+	  margin: 0;
+	  padding: 0;
+	  list-style: none;
+    margin-left: 0px !important;
+    margin-bottom: 0px !important;
+
+		li {
+  	  position: relative;
+  	  display: block;
+  	  float: left;
+  	  margin: 0;
+  	  padding: 0;
+  	  background: #ccc;
+  	  text-align: center;
+  	  line-height: 300px;
+  		background-size: cover;
+  		background-position: center center;
+		}
+	}
+}
+
+.slick-prev, .slick-next {
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 5px;
+  background: $white;
+}
+
+.slick-prev {
+  left: 25px;
+
+  @include MQ(SM) {
+    left: -10px;
+  }
+}
+
+.slick-next {
+  right: 25px;
+
+  @include MQ(SM) {
+    right: -10px;
+  }
+}
+
+.slick-prev:before {
+  content: '\f060';
+  font-family: $FontAwesome;
+  font-size: 1.5rem;
+  font-display: swap;
+}
+
+.slick-next:before {
+  content: '\f061';
+  font-family: $FontAwesome;
+  font-size: 1.5rem;
+  font-display: swap;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+  background: rgba($white, .8);
+}
+
+.slick-track
+{
+    display: flex !important;
+}
+
+.slick-slide
+{
+    height: inherit !important;
+}
+
+.slide {
+	height: 100% !important;
+}
+
+
+//mobile styles
+@include MQ(SM) {
+    .slide {
+      background-size: cover !important;
+      background-position: 50% 50%!important;
+      background-repeat: no-repeat;
+      background-color: $color-6;
+    }
+}
