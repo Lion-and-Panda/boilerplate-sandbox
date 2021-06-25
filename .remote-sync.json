@@ -5,14 +5,14 @@
   "uploadOnSave": true,
   "useAtomicWrites": false,
   "deleteLocal": false,
-  "hostname": "dev.lionandpanda.com",
-  "target": "/var/www/vhosts/lionandpanda.com/boilerplate.lionandpanda.com/wp-content/themes/lpboilerplate",
+  "hostname": "sandbox.lionandpanda.com",
+  "target": "/var/www/vhosts/sandbox.lionandpanda.com/httpdocs/wp-content/themes/lpboilerplate",
   "ignore": [
     ".remote-sync.json",
     ".git",
     "local.sql"
   ],
-  "username": "lionandpanda",
+  "username": "intern",
   "keyfile": "C:\\Users\\lehus\\OneDrive\\Documents\\private.ppk",
   "watch": [
     "/includes/css/app.css",
