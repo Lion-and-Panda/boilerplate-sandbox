@@ -38,6 +38,9 @@ $scripts_body = get_field( 'scripts_body', 'option' );
 <link rel="shortcut icon" href="<?= get_template_directory_uri(); ?>/images/favicon/favicon.ico" />
 
 <!--
+
+Hello!!!
+
                         ,,,         ,,,
                       ;"   ^;     ;'   ",
                       ;    s$$$$$$$s     ;
