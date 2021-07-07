@@ -4,7 +4,7 @@
 /* ------------------------------------------------------------------------- */
 ?>
 <?php get_header(); ?>
-<div id="limber"><!-- main -->
+<main id="wrapper"><!-- main -->
 	<div id="postFeed" class="main-content" role="main">
 
 		<!-- Blog Post Feed -->
@@ -40,5 +40,5 @@
 
 		</div>
 	</div>
-</div><!-- main -->
+</main><!-- main -->
 <?php get_footer(); ?>

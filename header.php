@@ -39,8 +39,6 @@ $scripts_body = get_field( 'scripts_body', 'option' );
 
 <!--
 
-test
-
                         ,,,         ,,,
                       ;"   ^;     ;'   ",
                       ;    s$$$$$$$s     ;
