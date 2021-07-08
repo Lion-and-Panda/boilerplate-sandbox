@@ -11,10 +11,10 @@ wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 //---------------------  // Fonts // ---------------------//
 	//Adobe Fonts
-	wp_enqueue_style( 'adobe_edge_web_fonts', 'https://use.typekit.net/rcl6gdl.css' );
+	//wp_enqueue_style( 'adobe_edge_web_fonts', 'https://use.typekit.net/rcl6gdl.css' );
 
 	//Google Fonts
-	//wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Gravitas+One|Raleway:300,300i,400,400i,700,700i,900,900i&display=swap' );
+	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css2?family=Roboto&family=Zilla+Slab:ital,wght@0,300;0,700;1,400&display=swap' );
 
 }
 
@@ -92,7 +92,7 @@ function acf_input_admin_footer() { ?>
 	<script type="text/javascript">
 		(function($) {
 		acf.add_filter('color_picker_args', function( args, $field ){
-			args.palettes = ['#fade6c', '#000000', '#ffffff' , '#AFD136', '#FFC10E', '#FFDE00', '#F8F8F8', '#4A4A4A' ]
+			args.palettes = ['#724D73', '#A8A351', '#B83631' , '#070000', '#D9CEB8', '#FFDE00', '#F8F8F8', '#4A4A4A' ]
 		return args;
 		});
 		})();

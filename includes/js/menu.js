@@ -116,11 +116,39 @@ jQuery(document).ready(function($){
     }
   }
 
+
 //prevent an instance where someone scrolls slow enough to the top to not to trigger the header to appear
   $(document).ready(function() {
   $(window).scroll(function(){
       if ($(this).scrollTop() < 50) {
          $('.headerMain').removeClass('is-hidden-nav');
+      }
+  });
+});
+
+//make the header transparent on homepage
+  $(document).ready(function() {
+    //change to the white version of the logo on the homepage on page load
+    $('.home header.headerMain .logo img').attr('src','/wp-content/themes/lpboilerplate/images/white_logo.svg');
+    $('.home header.headerMain').addClass('is-transparent-nav');
+    if ($(this).scrollTop() > 20) {
+      //make homepage header transparent when less than 20px from the top of the window
+       $('.headerMain').removeClass('is-transparent-nav');
+       //swap to the white version of the lgoo on the homepage when less than 20px from the top of the window
+       $('.home header.headerMain .logo img').attr('src','/wp-content/uploads/2019/06/mpe-logo.svg');
+    }
+  $(window).scroll(function(){
+      if ($(this).scrollTop() < 20) {
+        //make homepage header transparent when less than 20px from the top of the window
+         $('.headerMain').addClass('is-transparent-nav');
+         //swap to the white version of the lgoo on the homepage when less than 20px from the top of the window
+         $('.home header.headerMain .logo img').attr('src','/wp-content/themes/lpbuilder-miamipaint/images/mp-logo-white.svg');
+      }
+      if ($(this).scrollTop() > 20) {
+        //remove transparency from homepage header when more than 20px from the top of the window
+         $('.headerMain').removeClass('is-transparent-nav');
+         //swap to the color version of the lgoo on the homepage when more than 20px from the top of the window
+         $('.home header.headerMain .logo img').attr('src','/wp-content/uploads/2019/06/mpe-logo.svg');
       }
   });
 });

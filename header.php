@@ -39,8 +39,7 @@ $scripts_body = get_field( 'scripts_body', 'option' );
 
 <!--
 
-Hello!!!
-
+test23
                         ,,,         ,,,
                       ;"   ^;     ;'   ",
                       ;    s$$$$$$$s     ;
@@ -82,7 +81,7 @@ Hello!!!
   <a class="skip-link screen-reader-text" tabindex="0" href="#page-content"><?php esc_html_e( 'Skip to content' ); ?> > </a>
 
   <!--main header-->
-  <header id="main" class="headerMain zindex-5" style="background-color:<?= $header_bg ;?>;">
+  <header id="main" class="headerMain <?php if ( is_front_page() ) { ?>is-transparent-nav<?php } ?> zindex-5" style="background-color:<?= $header_bg ;?>;">
       <div class="container">
         <div class="columns is-vcentered">
 
@@ -134,16 +133,18 @@ Hello!!!
       					<form role="search" method="get" class="search-form relative" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                   <label for="search1" class="visually-hidden">Search</label>
       					  <input type="search" id="search1" class="search-field" placeholder="&#xf002;" value="<?php echo get_search_query(); ?>" aria-label="search the site" name="s" />
-                  <input type="submit" class="visually-hidden" value="Submit">
-                </form>
+                  <input type="submit" id="searchsubmit" class="visually-hidden" value="Search" />
+      					</form>
     				  </div>
     			  <?php } ?>
 
             <!--phone number-->
             <?php if($show_phone) { ?>
-              <div class="phoneNum" style="font-size: <?= $phone_num_size ;?>rem; font-weight:<?= $phone_num_weight ;?>; color: <?= $phone_num_color ;?>; ">
-                <?= $phone_num ?>
-              </div>
+              <a href="tel:<?= $phone_num ?>">
+                <div class="phoneNum" style="font-size: <?= $phone_num_size ;?>rem; font-weight:<?= $phone_num_weight ;?>; color: <?= $phone_num_color ;?>; ">
+                    <?= $phone_num ?>
+                </div>
+              </a>
             <?php } ?>
 
   				  <!--social icons-->

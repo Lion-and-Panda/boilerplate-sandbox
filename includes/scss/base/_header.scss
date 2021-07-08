@@ -1,6 +1,20 @@
 /*-----------------------------------------------------------------------------------*/
 /* Header
 /*-----------------------------------------------------------------------------------*/
+// home header style
+.home .headerMain {
+	&.is-transparent-nav {
+		background-color: $transparent !important;
+		transition: $transition-fast;
+		box-shadow: none;
+
+		#mainNavbar a {
+			color: white;
+		}
+
+	}
+}
+
 header {
 		padding: 15px 0px;
     box-shadow: $box-shadow;

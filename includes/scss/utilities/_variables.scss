@@ -3,12 +3,12 @@
 /*-----------------------------------------------------------------------------------*/
 
 // colors
-$primary-color: #fade6c;
+$primary-color: #A8A351;
 $primary-color-darken: darken($primary-color, 10%);
 $primary-color-lighten: lighten($primary-color, 10%);
 
-$color-1: #fade6c; //
-$color-2: #5a5a5a; //
+$color-1: #724D73; //
+$color-2: #B83631; //
 $color-3: #5a5a5a; //
 $color-4: #5a5a5a; //
 $color-5: #5a5a5a; //
@@ -18,8 +18,8 @@ $color-8: #5a5a5a; //
 
 $font-color: $black; // body text color
 
-$white: #fff;
-$black: #000;
+$white: #D9CEB8;
+$black: #070000;
 $transparent: rgba(255,255,255,0);
 
 // darken and lighten colors
@@ -28,8 +28,8 @@ $black-lighten: lighten($black, 20%);
 
 // Fonts
 $FontAwesome: 'Font Awesome 5 Pro';
-$primary-font: 'neuzeit-grotesk', sans-serif;
-$headline-font:	'span', serif;
+$primary-font: 'Roboto', sans-serif;
+$headline-font:	'Zilla Slab', serif;
 
 // font weights
 $Light: 300;
