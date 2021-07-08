@@ -110,7 +110,7 @@ myCarousel.each(function() {
 
       <!--logo slider-->
       <div class="columns">
-        <div aria-label="slider" class="column is-12 text-centered">
+        <div class="column is-12 text-centered">
           <div class="logoSlides">
 
             <?php if( have_rows('logos') ): ?>

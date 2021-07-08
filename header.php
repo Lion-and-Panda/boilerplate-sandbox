@@ -39,7 +39,10 @@ $scripts_body = get_field( 'scripts_body', 'option' );
 
 <!--
 
+<<<<<<< HEAD
 test23
+=======
+>>>>>>> 6a726fc7fc571f949fd206da4ba77d56d8b7dffe
                         ,,,         ,,,
                       ;"   ^;     ;'   ",
                       ;    s$$$$$$$s     ;
