@@ -81,7 +81,7 @@ $classSpace = 'is-' . $content_spacing;
         $list_item_1 = get_sub_field( 'list_item_1' );
         ?>
         <div class="content numeral">
-          <aside class='arrow numeral'><span class="numberCircle"><?= $counter?></span>  <?= $list_item_1 ?></aside>
+          <aside class='<?php if($column_background):?>arrow<?php endif ?> numeral'><span class="numberCircle"><?= $counter?></span>  <?= $list_item_1 ?></aside>
         </div>
         <?php
       endwhile;
@@ -96,7 +96,7 @@ $classSpace = 'is-' . $content_spacing;
             $list_item_a = get_sub_field( 'list_item_a' );
             ?>
             <div class="content letter">
-              <aside class="arrow letter"><span class="numberCircle letter"><?=  $letter_counter?></span> <?= $list_item_a ?></aside>
+              <aside class="<?php if($column_background):?>arrow<?php endif ?> letter"><span class="numberCircle letter"><?=  $letter_counter?></span> <?= $list_item_a ?></aside>
             </div>
             <?php
             $letter_counter++;
@@ -132,7 +132,7 @@ $classSpace = 'is-' . $content_spacing;
                     $list_item_i = get_sub_field( 'list_item_i' );
                     ?>
                     <div class="content roman">
-                      <aside class="arrow roman"><span class="numberCircle roman" id="roman<?=$roman_counter . "-" . $roman_iteration?>"></span><?=$list_item_i?></aside>
+                      <aside class="<?php if($column_background):?>arrow<?php endif ?> roman"><span class="numberCircle roman" id="roman<?=$roman_counter . "-" . $roman_iteration?>"></span><?=$list_item_i?></aside>
                     </div>
                     <!-- script inserts roman numerals into-->
                     <script>
