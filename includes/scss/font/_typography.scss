@@ -130,11 +130,11 @@ ol, ul {
 
 // highlighted text selections
 ::selection {
-    background: lighten($black,80%);
+    background: lighten($primary-color,10%);
     color: #fff;
 }
 ::-moz-selection {
-    background: lighten($black,80%);
+    background: lighten($primary-color,10%);
     color: #fff;
 }
 

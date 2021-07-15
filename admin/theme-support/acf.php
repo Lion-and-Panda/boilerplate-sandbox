@@ -326,6 +326,24 @@ acf_register_block(array(
         ),
 				'mode' 				=> 'edit',
 		));
+
+		// Chas Custom Blocks
+		acf_register_block(array(
+				'name'				=> 'ordered-list',
+				'title'				=> __('Ordered List'),
+				'description'		=> __('An Ordered List'),
+				'render_callback'	=> 'my_acf_block_render_callback',
+				'align' 			=> 'wide',
+				'category'			=> 'lpbuilder',
+				'icon'				=> 'block-default',
+				'keywords'			=> array( 'list, ordered-list, numbers' ),
+				'supports'      => array(
+                'align' => array( 'full', 'wide' ),
+                'anchor' => true,
+        ),
+				'mode' 				=> 'edit',
+		));
+
 		}
 }
 

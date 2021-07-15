@@ -131,24 +131,39 @@ jQuery(document).ready(function($){
     //change to the white version of the logo on the homepage on page load
     $('.home header.headerMain .logo img').attr('src','/wp-content/themes/lpboilerplate/images/white_logo.svg');
     $('.home header.headerMain').addClass('is-transparent-nav');
+
+    // on load make humburger menu white if homepage
+    $('.home-burger').addClass('white-burger');
+
     if ($(this).scrollTop() > 20) {
       //make homepage header transparent when less than 20px from the top of the window
        $('.headerMain').removeClass('is-transparent-nav');
+
+       // on load on home page if below point remove white
+       $('.home-burger').removeClass('white-burger');
+
        //swap to the white version of the lgoo on the homepage when less than 20px from the top of the window
-       $('.home header.headerMain .logo img').attr('src','/wp-content/uploads/2019/06/mpe-logo.svg');
+       $('.home header.headerMain .logo img').attr('src','/wp-content/themes/lpboilerplate/images/color_logo.svg');
     }
   $(window).scroll(function(){
       if ($(this).scrollTop() < 20) {
         //make homepage header transparent when less than 20px from the top of the window
          $('.headerMain').addClass('is-transparent-nav');
+
+         //make homepage white hamburger menu
+         $('.home-burger').addClass('white-burger');
+
          //swap to the white version of the lgoo on the homepage when less than 20px from the top of the window
-         $('.home header.headerMain .logo img').attr('src','/wp-content/themes/lpbuilder-miamipaint/images/mp-logo-white.svg');
+         $('.home header.headerMain .logo img').attr('src','/wp-content/themes/lpboilerplate/images/white_logo.svg');
       }
       if ($(this).scrollTop() > 20) {
         //remove transparency from homepage header when more than 20px from the top of the window
          $('.headerMain').removeClass('is-transparent-nav');
+
+         $('.home-burger').removeClass('white-burger');
+
          //swap to the color version of the lgoo on the homepage when more than 20px from the top of the window
-         $('.home header.headerMain .logo img').attr('src','/wp-content/uploads/2019/06/mpe-logo.svg');
+         $('.home header.headerMain .logo img').attr('src','/wp-content/themes/lpboilerplate/images/color_logo.svg');
       }
   });
 });

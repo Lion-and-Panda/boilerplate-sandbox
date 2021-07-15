@@ -3,14 +3,14 @@
 /*-----------------------------------------------------------------------------------*/
 
 // colors
-$primary-color: #A8A351;
+$primary-color: #7A0023; // Pastel Red
 $primary-color-darken: darken($primary-color, 10%);
 $primary-color-lighten: lighten($primary-color, 10%);
 
-$color-1: #724D73; //
-$color-2: #B83631; //
-$color-3: #5a5a5a; //
-$color-4: #5a5a5a; //
+$color-1: #240B0F; // Dark Red
+$color-2: #8A7932; // Field Green
+$color-3: #C9B77D; // Light Green
+$color-4: #FFE8BA; // Tanish White
 $color-5: #5a5a5a; //
 $color-6: #5a5a5a; //
 $color-7: #5a5a5a; //
@@ -18,8 +18,8 @@ $color-8: #5a5a5a; //
 
 $font-color: $black; // body text color
 
-$white: #D9CEB8;
-$black: #070000;
+$white: #FAF1D5; // slight tanish white
+$black: #0D0C09; // slight redish black
 $transparent: rgba(255,255,255,0);
 
 // darken and lighten colors

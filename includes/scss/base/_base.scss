@@ -1,6 +1,14 @@
 /*-----------------------------------------------------------------------------------*/
 /*	Base css
 /*-----------------------------------------------------------------------------------*/
+
+//home page only styles
+.home {
+	#wrapper {
+		margin-top: 0px; //place content under header
+	}
+}
+
 html, body {
 	height: 100%;
 }
@@ -287,7 +295,7 @@ padding: $padding-flat ;
 
 // Invert Colors
 .inverted {
-	h1, h2, h3, h4, h5, h6, p, a, i, svg, .slick-prev:before, .slick-next:before {
+	h1, h2, h3, h4, h5, h6, p, a, i, svg, span, .slick-prev:before, .slick-next:before {
 		color: white !important;
 	}
 		a:hover {

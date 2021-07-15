@@ -40,9 +40,8 @@ $scripts_body = get_field( 'scripts_body', 'option' );
 <!--
 
 <<<<<<< HEAD
-test23
-=======
->>>>>>> 6a726fc7fc571f949fd206da4ba77d56d8b7dffe
+
+
                         ,,,         ,,,
                       ;"   ^;     ;'   ",
                       ;    s$$$$$$$s     ;
@@ -102,7 +101,7 @@ test23
       				<?php } ?>
 
       				<!--mobile hamburger menu icon-->
-              <a id="lpbp-menu-trigger" class="navbar-burger burger" href="#" aria-haspopup="true" aria-expanded="false" aria-label="open Mobile navigation">
+              <a id="lpbp-menu-trigger" class="navbar-burger burger <?php if ( is_front_page() ) { ?>home-burger<?php } ?>" href="#" aria-haspopup="true" aria-expanded="false" aria-label="open Mobile navigation">
                 <i class="fas fa-bars"></i>
               </a>
 

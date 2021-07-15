@@ -16,7 +16,7 @@ $content_aligment = get_field( 'block_content_alignment' );
 $button_aligment = get_field( 'button_alignment' );
 $content_spacing = get_field( 'content_spacing' );
 $invert_title = get_field( 'title_invert' );
-$invert_testimonials = get_field( 'testimonial_invert' );
+$invert_testimonials = get_field( 'invert_testimonials' );
 $column_background = get_field( 'column_background' );
 $column_background_color = get_field( 'featured_column_background_color' );
 $column_border_radius = get_field( 'featured_column_border_radius' );
@@ -93,7 +93,7 @@ $classSpace = 'is-' . $content_spacing;
               <?= $testimonial_content ;?>
             </div>
             <div class="byline">
-              <span><?= $name ;?></span><?php if($company) { ?>| <?= $company ;?> <?php } ?>
+              <p><span><?= $name ;?></span><?php if($company) { ?>| <?= $company ;?> <?php } ?></p>
             </div>
           </div>
 

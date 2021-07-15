@@ -177,6 +177,10 @@ header {
         font-size: 1.5rem;
         text-align: right;
 
+		&.white-burger {
+				color: $white;
+		}
+
 		&:hover {
 			opacity: .5;
 			background: transparent;

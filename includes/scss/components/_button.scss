@@ -4,7 +4,7 @@
 
 .button {
 	transition: $transition-regular;
-  background: transparent !important;
+  background: transparent;
   border-width: 2px;
   border-color: $black;
 	font-family:  $primary-font;
@@ -17,7 +17,7 @@
 
 	&:hover {
 		cursor: pointer;
-    border-color: $black !important;
+    border-color: $black;
 		transform: translateY(-2px);
 		box-shadow: $box-shadow;
 	}
@@ -48,12 +48,12 @@
 //inverted button
 .inverted {
     .button {
-        background: $white !important;
-        color: $font-color !important;
-        border-color: $white !important;
+        background: $white;
+        color: $font-color;
+        border-color: $white;
 
         &:hover {
-            background: $white-darken !important;
+            background: $white-darken;
         }
     }
 }

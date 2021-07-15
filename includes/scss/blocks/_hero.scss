@@ -28,17 +28,17 @@
     .button {
 
       &:first-of-type {
-        color: $font-color !important;
-        border: solid 2px $font-color !important;
+        color: $font-color;
+        border: solid 2px $font-color;
 
         &:hover {
         }
       }
 
       &:last-of-type {
-        background-color: $font-color !important;
-        color: $white !important;
-        border: solid 2px $font-color !important;
+        background-color: $font-color;
+        color: $white;
+        border: solid 2px $font-color;
           }
     }
 
@@ -126,9 +126,9 @@
 
   .button {
   &:first-of-type {
-    background-color: transparent !important;
-    color: $primary-color !important;
-    border: solid 2px $primary-color !important;
+    background-color: transparent;
+    color: $primary-color;
+    border: solid 2px $primary-color;
 
     &:hover {
       border-color: $primary-color-darken !important;

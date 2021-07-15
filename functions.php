@@ -92,7 +92,7 @@ function acf_input_admin_footer() { ?>
 	<script type="text/javascript">
 		(function($) {
 		acf.add_filter('color_picker_args', function( args, $field ){
-			args.palettes = ['#724D73', '#A8A351', '#B83631' , '#070000', '#D9CEB8', '#FFDE00', '#F8F8F8', '#4A4A4A' ]
+			args.palettes = ['#7A0023', '#240B0F', '#8A7932' , '#C9B77D', '#FFE8BA', '#FAF1D5', '#0D0C09', '#4A4A4A' ]
 		return args;
 		});
 		})();
