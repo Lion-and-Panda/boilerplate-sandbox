@@ -37,16 +37,16 @@ $block_headline = get_field( 'block_headline' );
 
             <!--categories-->
             <div class="column is-9">
-              <nav class="navbar-filter" role="filters" aria-label="filter navigation">
+              <nav class="navbar-filter" aria-label="filter navigation">
                 <div id="navbarBasicExample" class="navbar-menu">
                   <div class="navbar-start">
-                    <a class="navbar-item libraryTypes selected" id="all" tabindex="0" name="all" data-value="all">All</a>
+                    <button class="navbar-item libraryTypes selected" id="all" name="all" data-value="all">All</button>
 
                     <?php
                     $terms = get_terms('resource_category', array( 'orderby' => 'count', 'order' => 'DESC' ));
                     foreach($terms as $term){
                         if($term->count > 0){ ?>
-                            <a class="navbar-item libraryTypes not-selected" id="<?= $term->slug; ?>" tabindex="0" data-value="<?= $term->slug; ?>"><?= $term->name; ?></a>
+                            <button class="navbar-item libraryTypes not-selected" id="<?= $term->slug; ?>" tabindex="0" data-value="<?= $term->slug; ?>"><?= $term->name; ?></button>
                         <?php }
                       }
                       ?>
@@ -54,17 +54,17 @@ $block_headline = get_field( 'block_headline' );
                   </div>
 
                   <!--filter dropdown button-->
-                  <a class="advanced-filter-trigger filterHidden left" tabindex="0" aria-haspopup="true" aria-expanded="false">Filter <i id="filterArrow" class="fas fa-angle-right "></i></a>
+                  <button class="advanced-filter-trigger filterHidden left" aria-haspopup="true" aria-expanded="false" name="data" type="button" onclick="getData()">Filter <i id="filterArrow" class="fas fa-angle-right "></i></button>
 
                   <!--reset button-->
-                  <a id="reset" onClick="window.location.reload();" style="display: none;" tabindex="0"><i class="fas fa-sync-alt"></i> Reset</a>
+                  <button id="reset" onClick="window.location.reload();" style="display: none;" ><i class="fas fa-sync-alt"></i> Reset</button>
 
                 </nav>
               </div>
 
               <!--search resource library-->
     					<div class="column is-3">
-                <label for="resource-search" class="visually-hidden">Search Resource Library</label>
+                <label for="titleSearch" class="visually-hidden">Search Resource Library</label>
     						<input class=" " type="search" placeholder="Type To Search" id="titleSearch" name="titleSearch"/>
               </div>
             </div>
