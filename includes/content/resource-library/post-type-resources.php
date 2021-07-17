@@ -30,9 +30,9 @@ function vesst_register_post_type() {
 		"capability_type" 		=> "post",
 		'menu_icon'           	=> 'dashicons-media-document',
 		"hierarchical" 			=> false,
-		"rewrite" 				=> array( 	
-									"slug" => "resource", 
-									"with_front" => true 
+		"rewrite" 				=> array(
+									"slug" => "resource",
+									"with_front" => true
 								),
 		"query_var" 			=> true,
 		"supports" 				=> array( "title", "revisions", "thumbnail", "editor", "excerpt"),
@@ -131,5 +131,3 @@ function tags_support_query($wp_query) {
 // tag hooks
 add_action('init', 'tags_support_all');
 add_action('pre_get_posts', 'tags_support_query');
-
-

@@ -344,38 +344,6 @@ acf_register_block(array(
 				'mode' 				=> 'edit',
 		));
 
-//blocks for resource library
-		acf_register_block(array(
-			'name'				=> 'resources',
-			'title'				=> __('Resources'),
-			'description'		=> __('Resources block'),
-			'render_callback'	=> 'my_acf_block_render_callback',
-			'align' 			=> 'wide',
-			'category'			=> 'lpbuilder',
-			'icon'				=> 'block-default',
-			'keywords'			=> array( 'resource, library' ),
-			'supports'      => array(
-							'align' => array( 'full', 'wide' ),
-							'anchor' => true,
-			),
-			'mode' 				=> 'edit',
-	));
-					acf_register_block(array(
-			'name'				=> 'simple-resources',
-			'title'				=> __('Simple Resources'),
-			'description'		=> __('Simple Resources block'),
-			'render_callback'	=> 'my_acf_block_render_callback',
-			'align' 			=> 'wide',
-			'category'			=> 'lpbuilder',
-			'icon'				=> 'block-default',
-			'keywords'			=> array( 'resource, librar' ),
-			'supports'      => array(
-							'align' => array( 'full', 'wide' ),
-							'anchor' => true,
-			),
-			'mode' 				=> 'edit',
-	));
-
 		}
 }
 
