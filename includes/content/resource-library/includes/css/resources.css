@@ -48,6 +48,12 @@
   font-size: 0.8rem;
   margin-right: 10px;
 }
+.resource-library .sorter input[type=search] {
+  background: transparent;
+  border: solid 2px rgba(0, 0, 0, 0.05) s;
+  font-size: 0.8rem;
+  width: 100%;
+}
 .resource-library #advanced-filter {
   -webkit-transition: max-height 1s;
   -moz-transition: max-height 1s;
