@@ -1,3 +1,4 @@
+
 <?php
 /* ------------------------------------------------------------------------- *
  *  Resource Library Process
@@ -199,7 +200,7 @@
   					<?php } else {
   						$searchURL = get_permalink(get_the_ID()); ?>
     					<div data-type="regular-default" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed'); ?> >
-                <a href="<?= $searchURL; ?>" target="_blank" style="cursor: pointer; display: block;">
+                <a href="<?= $searchURL; ?>" style="cursor: pointer; display: block;">
                 <article>
 
 					<?php } ?>
@@ -216,9 +217,10 @@
 					$thumbnail_url= wp_get_attachment_image_src($thumbnail_id, 'small_thumb', true);
 					$thumbnail_meta = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 					$hero = $thumbnail_url[0];
+          $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 					if ( has_post_thumbnail() ) { ?>
 						<div class="blog-feature">
-              <img class="hundred" src="<?= $hero; ?>">
+              <img class="hundred" src="<?= $hero; ?>" alt="<?=  $alt ?>">
             </div>
 
             <div class="typeIcon">
@@ -226,20 +228,22 @@
               if(get_field('video_link',$post->ID)){
                 $vidlink = get_field('video_link',$post->ID);
               ?>
-
               <i class="fas fa-play"></i>
+
               <?php
                 } else if (get_field('file',$post->ID)){
-                  $downloadLink = get_field('file',$post->ID);
                   ?>
-                <i class="fas fa-download"></i>
+                  <i class="fas fa-download"></i>
 
               <?php
                 } else if (get_field('link',$post->ID)){
-                  $theLink = get_field('link',$post->ID);
               ?>
+              <i class="fas fa-link"></i>
 
-            <i class="fas fa-link"></i>
+              <?php
+                } else {
+              ?>
+              <i class="fas fa-file"></i>
 
               <?php } ?>
 							</div>
@@ -266,7 +270,7 @@
 							<?php } else { ?>
                 <div class="blog-feature no-image">
                   <div class="typeIcon">
-                    <i class="fas fa-download"></i>
+                    <i class="fas fa-file"></i>
                   </div>
 								</div>
 							<?php } ?>
@@ -276,7 +280,7 @@
 							<section class="post-section">
 								<div class="entry-content">
 									<h3><?php the_title(); ?></h3>
-									<?php the_content(); ?>
+									<?php the_excerpt(); ?>
 								</div>
 							</section>
 						</div>
@@ -289,13 +293,15 @@
                 <p><strong>Watch Video</strong></p>
 
                 <?php } else if (get_field('file',$post->ID)){
-                  $downloadLink = get_field('file',$post->ID);
                   ?>
                     <p><strong>Download</strong></p>
                   <?php } else if (get_field('link',$post->ID)){
-                    $theLink = get_field('link',$post->ID);
                     ?>
                       <p><strong>Go To Link</strong></p>
+
+                    <?php } else {
+                      ?>
+                        <p><strong>Go To Document</strong></p>
                       <?php } ?>
               </div>
             </article>
@@ -337,7 +343,7 @@
 				<?php }
 			}
 		} else { ?>
-			<div class="item">No tags found; please try a different search.</div>
+			<div class="item">No tags found.</div>
 		<?php } ?>
 
 		<script type="text/javascript">

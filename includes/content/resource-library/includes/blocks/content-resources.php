@@ -11,7 +11,6 @@ $block_headline = get_field( 'block_headline' );
 <section id="resource-library" class="is-small section relative resource-library">
     <div class="container">
 
-  		<div id="loading" class="loading" ><div class="centered"><i class="fa fa-cog fa-spin"></i> Finding Resources ...</div></div>
 
     <!--filter-->
     	<div id="query-filter">
@@ -33,52 +32,57 @@ $block_headline = get_field( 'block_headline' );
     			</div>
 
           <!--sorter/filter system-->
-          <div class="columns is-vcentered sorter">
+          <div class="columns is-vcentered is-multiline sorter">
 
-            <!--categories-->
+            <!--categories filter-->
             <div class="column is-9">
               <nav class="navbar-filter" aria-label="filter navigation">
-                <div id="navbarBasicExample" class="navbar-menu">
-                  <div class="navbar-start">
-                    <button class="navbar-item libraryTypes selected" id="all" name="all" data-value="all">All</button>
+                <div id="categoryfilter">
+                    <button class="libraryTypes selected" id="all" name="all" data-value="all">All</button>
 
                     <?php
                     $terms = get_terms('resource_category', array( 'orderby' => 'count', 'order' => 'DESC' ));
                     foreach($terms as $term){
                         if($term->count > 0){ ?>
-                            <button class="navbar-item libraryTypes not-selected" id="<?= $term->slug; ?>" tabindex="0" data-value="<?= $term->slug; ?>"><?= $term->name; ?></button>
+                            <button class="libraryTypes not-selected" id="<?= $term->slug; ?>" tabindex="0" data-value="<?= $term->slug; ?>"><?= $term->name; ?></button>
                         <?php }
                       }
                       ?>
-                    </div>
                   </div>
-
-                  <!--filter dropdown button-->
-                  <button class="advanced-filter-trigger filterHidden left" aria-haspopup="true" aria-expanded="false" name="data" type="button" onclick="getData()">Filter <i id="filterArrow" class="fas fa-angle-right "></i></button>
-
-                  <!--reset button-->
-                  <button id="reset" onClick="window.location.reload();" style="display: none;" ><i class="fas fa-sync-alt"></i> Reset</button>
-
                 </nav>
               </div>
 
               <!--search resource library-->
     					<div class="column is-3">
                 <label for="titleSearch" class="visually-hidden">Search Resource Library</label>
-    						<input class=" " type="search" placeholder="Type To Search" id="titleSearch" name="titleSearch"/>
+    						<input class=" " type="search" placeholder="Search Resources" id="titleSearch" name="titleSearch"/>
               </div>
+
+            <!--filter and reset buttons-->
+            <div class="column is-12">
+                <!--filter dropdown button-->
+                <button class="advanced-filter-trigger filterHidden left" aria-haspopup="true" aria-expanded="false" name="data" type="button" onclick="return false;">Filter <i id="filterArrow" class="fas fa-angle-right "></i></button>
+                <!--reset button-->
+                <button id="reset" onClick="window.location.reload();" style="display: none;" ><i class="fas fa-sync-alt"></i> Reset</button>
             </div>
+          </div>
 
             <!--filter dropdown area-->
-            <div id="advanced-filter" class="hidden" aria-hidden="true" tabindex="-1">
-              <div class="columns is-vcentered is-multiline is-mobile" style="background-color: rgba(0,0,0,.025); padding: 15px; border-radius: 3px;">
-                <div class="column is-5-desktop is-6-mobile">
+            <div id="advanced-filter" class="hidden" aria-hidden="true" aria-label="advanced filter area open" tabindex="-1">
+
+              <!--close button-->
+              <div class="text-right">
+                <button class="advanced-filter-close filterHidden" aria-label="close filters" onclick="return false;"><i class="fas fa-times"></i></button>
+              </div>
+
+              <div class="columns is-multiline is-mobile">
+
+                <div class="column is-6-desktop is-12-mobile">
 
                   <!--filter by type-->
                   <div class="filterHalf">
-                    <div class="filter-headline">
-                      <h4>Media Type</h4>
-                    </div>
+                    <fieldset>
+                      <legend>Filter By Media Type</legend>
 
                     <div class="filter-options">
                       <?php
@@ -92,26 +96,24 @@ $block_headline = get_field( 'block_headline' );
                         <?php }
                       } ?>
                     </div>
+
+                  </fieldset>
                   </div>
                 </div>
 
                 <!--filter by tag-->
-                <div class="column is-5-desktop is-6-mobile">
-                  <div class="filterHalf">
-                    <div class="filter-headline">
-                      <h4>Select Tags</h4>
-                    </div>
+                <div class="column is-6-desktop is-12-mobile">
+                  <div class="filterHalf relative">
+                    <!--give screenreader and keyboard-only users ability to skip past long tag listing-->
+                    <a class="skip-link screen-reader-text" tabindex="0" href="#query-results"><?php esc_html_e( 'Skip tag list' ); ?> > </a>
+                    <fieldset>
+                      <legend>Filter By Tags</legend>
+                      <label for="tagSearch" class="visually-hidden">Search Resource Library by tags</label>
+                      <input name="tagSearch" id="tagSearch" class="tagSearch" type="search" placeholder="Search Tags" value=""/>
                     <div class="filter-options" id="tagDiv">
                       <!-- populated by JS -->
                     </div>
-                  </div>
-                </div>
-
-                <!--search by tags-->
-                <div class="column is-2-desktop is-12-mobile">
-                  <div class="filterHalf">
-                    <label for="tagSearch" class="visually-hidden">Search Resource Library by tags</label>
-                    <input name="tagSearch" id="tagSearch" class="right tagSearch" type="search" placeholder="Search Tags" value=""/>
+                  </fieldset>
                   </div>
                 </div>
 
@@ -172,7 +174,7 @@ $block_headline = get_field( 'block_headline' );
     												//$('#submit-filter').fadeOut(250); $('.equal-h').matchHeight();
     										},
     										error: function (e) {
-                            alert("An application error occured. Please contact your administrator. [Error code: ajax " + e + "]");
+                            alert("this is where the error comes from. An application error occured. Please contact your administrator. [Error code: ajax " + e + "]");
                             console.log(e);
                           }
                         });
@@ -244,26 +246,42 @@ $block_headline = get_field( 'block_headline' );
 
     							$(document).on('click', '.advanced-filter-trigger', function () {
     								if($(this).hasClass("filterHidden")){
-    									$("#advanced-filter").addClass("is-visible");
-    									$("#try-advanced-filter").removeClass("is-visible");
-    									$("#advanced-filter").removeClass("hidden");
-                      $("#advanced-filter").attr('aria-hidden', 'false');
-    									$("#filterArrow").addClass("fa-angle-down");
-    									$("#filterArrow").removeClass("fa-angle-right");
-    									$(this).removeClass("filterHidden");
-                      $(this).attr('aria-expanded', 'true');
+    									$("#advanced-filter").toggleClass("is-visible");
+    									$("#advanced-filter").toggleClass("hidden");
+                      $("#advanced-filter").attr("aria-hidden", function (i, attr) {
+                          return attr == "true" ? "false" : "true";
+                      });
+    									$("#filterArrow").toggleClass("fa-angle-down");
+    									$("#filterArrow").toggleClass("fa-angle-right");
+    									$(this).toggleClass("filterHidden");
+                      $(this).attr("aria-expanded", function (i, attr) {
+                          return attr == "true" ? "false" : "true";
+                      });
                       $("#advanced-filter").focus();
     								} else {
-    									$("#advanced-filter").removeClass("is-visible");
-    									$("#advanced-filter").addClass("hidden");
-                      $("#advanced-filter").attr('aria-hidden', 'true');
-    									$("#try-advanced-filter").removeClass("is-visible");
-    									$("#filterArrow").removeClass("fa-angle-down");
-    									$("#filterArrow").addClass("fa-angle-right");
-    									$(this).addClass("filterHidden");
-                      $(this).attr('aria-expanded', 'false');
+    									$("#advanced-filter").toggleClass("is-visible");
+    									$("#advanced-filter").toggleClass("hidden");
+                      $("#advanced-filter").attr("aria-hidden", function (i, attr) {
+                          return attr == "true" ? "false" : "true";
+                      });
+    									$("#filterArrow").toggleClass("fa-angle-down");
+    									$("#filterArrow").toggleClass("fa-angle-right");
+    									$(this).toggleClass("filterHidden");
+                      $(this).attr("aria-expanded", function (i, attr) {
+                          return attr == "true" ? "false" : "true";
+                      });
                       $(this).focus();
     								}
+    							});
+
+                  $(document).on('click', '.advanced-filter-close', function () {
+                    $(this).closest("#advanced-filter").removeClass("is-visible"),
+                    $("#advanced-filter").removeClass("is-visible");
+                    $("#advanced-filter").addClass("hidden");
+                    $("#advanced-filter").attr('aria-hidden', 'true');
+                    $('.advanced-filter-trigger').attr('aria-expanded', 'false');
+                    $("#filterArrow").removeClass("fa-angle-down");
+                    $("#filterArrow").addClass("fa-angle-right");
     							});
 
 
@@ -291,7 +309,6 @@ $block_headline = get_field( 'block_headline' );
     								} else {
     									//only really does this the first time it's clicked
     									if ($("#advanced-filter").is(':not(.is-visible)')) {
-    										$("#try-advanced-filter").addClass("is-visible");
     									}
     									$("#filterArrow").addClass("fa-angle-down");
     									$("#filterArrow").removeClass("fa-angle-right");
@@ -325,6 +342,7 @@ $block_headline = get_field( 'block_headline' );
     							function submitSearch() {
     								$.when(
     									$('#loading').addClass('is-active'),
+                      $('#loading').html('<h3><i class="fas fa-circle-notch fa-spin"></i> Loading Resources</h3>'),
     									$('#query-results').html(''),
     									$('#loading').fadeIn(1000),
     									console.log("loading")
@@ -354,6 +372,7 @@ $block_headline = get_field( 'block_headline' );
     										async: false,
     										success: function (html) {
     											$('#loading').removeClass('is-active');
+                          $('#loading').html(''),
     											$('#loading').fadeOut(1000);
     											$("#query-results").html(html).hide().fadeIn(1250);
 
@@ -374,21 +393,6 @@ $block_headline = get_field( 'block_headline' );
     						});
 
                 //add enter key listener to all click actions for accessibility
-                $(".libraryTypes").keyup(function(event) {
-                      if (event.keyCode === 13) {
-                          $(this).click();
-                      }
-                  });
-                $(".advanced-filter-trigger").keyup(function(event) {
-                      if (event.keyCode === 13) {
-                          $(".advanced-filter-trigger").click();
-                      }
-                  });
-                  $("#reset").keyup(function(event) {
-                        if (event.keyCode === 13) {
-                            $("#reset").click();
-                        }
-                    });
                     $(".typeFilter").keyup(function(event) {
                           if (event.keyCode === 13) {
                               $(this).click();
@@ -403,6 +407,10 @@ $block_headline = get_field( 'block_headline' );
 
         <!--results-->
 		<div class="section is-small relative" style="padding-top: 20px;"> <!-- Container for sidebar tags -->
+      <div id="loading" class="centered" aria-live="assertive">
+        <!--contents created by js. Accessible live announcment-->
+      </div>
+
 			<div id="query-results"  class="p-t-50 p-b-50">
         <!--populated by js-->
       </div>

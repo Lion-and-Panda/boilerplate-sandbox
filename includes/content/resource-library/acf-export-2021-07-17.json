@@ -23,25 +23,6 @@
                 "maxlength": ""
             },
             {
-                "key": "field_5eceba23fc15e",
-                "label": "Title",
-                "name": "title",
-                "type": "text",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
                 "key": "field_5eceba60fc15f",
                 "label": "Description",
                 "name": "description",
@@ -296,7 +277,7 @@
             },
             {
                 "key": "field_5eceb01366fe4",
-                "label": "Document",
+                "label": "Download",
                 "name": "",
                 "type": "tab",
                 "instructions": "",
@@ -345,7 +326,6 @@
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": [
-            "excerpt",
             "categories"
         ],
         "active": true,
