@@ -1,14 +1,10 @@
+
 <?php
 /* ------------------------------------------------------------------------- *
- * 	Butler
- *  Resource Library Process		Version		 1.0.0
+ *  Resource Library Process
 /* ------------------------------------------------------------------------- */
     require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
     global $wpdb;
-
-    // echo "<pre>";
-    // print_r($_POST);
-    // echo "</pre>";
 
     /**********************
     ****** GET ARGS *******
@@ -157,9 +153,7 @@
     $args['post_type'] = 'resource';
     $args['posts_per_page'] = -1;
     $args['orderby'] = 'date';
-	$args['order'] = 'DESC';
-
-
+    $args['order'] = 'DESC';
 
     if($_POST['pullType'] == "results"){
 
@@ -170,11 +164,7 @@
         <div class="columns is-multiline is-mobile" style="display: flex;">
         <?php
         $searchLoop = new WP_Query( $args );
-
-        // echo "<pre>";
-        // print_r($searchLoop);
-        // echo "</pre>";
-		$now = new DateTime();
+        $now = new DateTime();
 
         ?>
 
@@ -185,188 +175,150 @@
 				$start = get_field('start_date');
 				$end = get_field('end_date');
 
-
 				if(empty($start) || strtotime($start) > strtotime('now') ) {
-
 
 				if(empty($end) || strtotime($end) < strtotime('now') ) {
 
 					if(get_field('file')){
 						$searchURL = get_field('file')['url']; ?>
-					<div data-type="file" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed'); ?> >
-						<article onclick="window.open('<?= $searchURL; ?>'); ga('<?php the_title(); ?>');"  style="cursor: pointer;">
-
+            <div data-type="file" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed'); ?> >
+              <a href="<?= $searchURL; ?>" target="_blank" aria-label="Download <?php the_title(); ?>" style="cursor: pointer; display: block;">
+                <article>
 
 					<?php } elseif(get_field('link')){
 						$searchURL = get_field('link'); ?>
-					<div  data-type="link" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed'); ?> >
-						<article onclick="window.open('<?= $searchURL['url']; ?>'); ga('<?php the_title(); ?>');"  style="cursor: pointer;">
+            <div  data-type="link" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed'); ?> >
+              <a href="<?= $searchURL['url']; ?>" target="<?= $searchURL['target']; ?>" aria-label="Go to <?php the_title(); ?>" style="cursor: pointer; display: block;">
+                <article >
 
-            <?php } elseif(get_field('email_text')){
-              $searchURL = get_permalink(get_the_ID()); ?>
-            <div  data-type="email" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed'); ?> >
-              <article onclick="link('<?= $searchURL; ?>'); ga('<?php the_title(); ?>');"  style="cursor: pointer;">
+  					<?php } elseif(get_field('video_link')){
+  						$vid = get_field('video_link', false, false); ?>
+              <div data-type="video" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed '); ?> >
+                <a class="popup-video" href="<?= $vid; ?>" title="play video" aria-label="Watch <?php the_title(); ?>" aria-haspopup="true" style="cursor: pointer; display: block;">
+                  <article>
 
-					<?php } elseif(get_field('video_link')){
-						$vid = get_field('video_link', false, false); ?>
-					<div data-type="video" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed '); ?> >
-						<article class="popup-youtube" onclick="linkVideo('<?php echo $vid; ?>?rel=0&autoplay=1'); ga('<?php the_title(); ?>');"  style="cursor: pointer;">
+  					<?php } else {
+  						$searchURL = get_permalink(get_the_ID()); ?>
+    					<div data-type="regular-default" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed'); ?> >
+                <a href="<?= $searchURL; ?>" style="cursor: pointer; display: block;">
+                <article>
 
-					<?php } else {
-						$searchURL = get_permalink(get_the_ID()); ?>
-					<div data-type="regular-default" data-id="post-<?php the_ID(); ?>" <?php post_class('column is-4-desktop is-6-mobile feed'); ?> >
-						<article onclick="link('<?= $searchURL; ?>'); ga('<?php the_title(); ?>');"  style="cursor: pointer;">
+					<?php } ?>
 
-					<?php }
+  				<?php
+  				$terms = get_the_terms(get_the_ID(), 'type_group');
+  				if($terms){
+  					$type = $terms[0]->name;
+  				} else {
+  					$type = "Info";
+  				}
 
-          ?>
+					$thumbnail_id = get_post_thumbnail_id();
+					$thumbnail_url= wp_get_attachment_image_src($thumbnail_id, 'small_thumb', true);
+					$thumbnail_meta = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+					$hero = $thumbnail_url[0];
+          $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+					if ( has_post_thumbnail() ) { ?>
+						<div class="blog-feature">
+              <img class="hundred" src="<?= $hero; ?>" alt="<?=  $alt ?>">
+            </div>
 
-						<?php
-						$terms = get_the_terms(get_the_ID(), 'type_group');
-						if($terms){
-							$type = $terms[0]->name;
-						} else {
-							$type = "Info";
-						}
+            <div class="typeIcon">
+              <?php
+              if(get_field('video_link',$post->ID)){
+                $vidlink = get_field('video_link',$post->ID);
+              ?>
+              <i class="fas fa-play"></i>
 
-						// $post_date = get_the_date( 'F n, Y' );
+              <?php
+                } else if (get_field('file',$post->ID)){
+                  ?>
+                  <i class="fas fa-download"></i>
 
-						$thumbnail_id = get_post_thumbnail_id();
-						$thumbnail_url= wp_get_attachment_image_src($thumbnail_id, 'small_thumb', true);
-						$thumbnail_meta = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-						$hero = $thumbnail_url[0];
-						if ( has_post_thumbnail() ) { ?>
-							<div class="blog-feature">
-								<img class="hundred" src="<?= $hero; ?>">
+              <?php
+                } else if (get_field('link',$post->ID)){
+              ?>
+              <i class="fas fa-link"></i>
+
+              <?php
+                } else {
+              ?>
+              <i class="fas fa-file"></i>
+
+              <?php } ?>
 							</div>
 
-							<div class="typeIcon">
-								<?php
-                            if(get_field('video_link',$post->ID)){
-                                $vidlink = get_field('video_link',$post->ID);
-                                ?>
-                                    <a onclick="linkVideo('<?php echo $vidlink; ?>?rel=0&autoplay=1'); ga('<?php the_title(); ?>');"  style="cursor: pointer;"><i class="fas fa-play"></i></a>
-                                <?php
-                            }
-                            else if (get_field('file',$post->ID)){
-
-                                $downloadLink = get_field('file',$post->ID);
-                                ?>
-                                    <a href="<?=$downloadLink['url']?>"><i class="fas fa-download"></i></a>
-                                <?php
-                            }
-                            else if (get_field('link',$post->ID)){
-                                $theLink = get_field('link',$post->ID);
-                                ?>
-                                    <a href="<?=$theLink['url']?>"><i class="fas fa-link"></i></a>
-                                <?php
-                            }
-                            else if (get_field('email_text',$post->ID)){
-                                $emailLink = get_field('email_text',$post->ID);
-                                ?>
-                                    <a><i class="fas fa-envelope"></i></a>
-                                <?php
-                            }
-                            ?>
-							</div>
-
-						<?php } else { ?>
-							<?php if($type == 'Downloads' || $type == 'PDF' || $type == 'File') { ?>
-                <div class="blog-feature no-image">
-                 <div class="typeIcon">
-									 <i class="fas fa-file-alt"></i>
-								</div>
-              </div>
-							<?php } else if (get_field('link',$post->ID)){ ?>
+  						<?php } else { ?>
+                  <?php if($type == 'Downloads' || $type == 'PDF' || $type == 'File') { ?>
+                    <div class="blog-feature no-image">
+                      <div class="typeIcon">
+                        <i class="fas fa-file-alt"></i>
+                      </div>
+                    </div>
+              <?php } else if (get_field('link',$post->ID)){ ?>
                 <div class="blog-feature no-image">
                  <div class="typeIcon">
 									<i class="fas fa-link"></i>
 								</div>
               </div>
-							<?php }
-              else if (get_field('email_text',$post->ID)){ ?>
+							<?php } else if(get_field('video_link',$post->ID)){ ?>
                 <div class="blog-feature no-image">
-                 <div class="typeIcon">
-									<i class="fas fa-envelope"></i>
+                  <div class="typeIcon">
+									<i class="fas fa-play"></i>
 								</div>
               </div>
-							<?php }
-               else if(get_field('video_link',$post->ID)){ ?>
-                 <div class="blog-feature no-image">
+							<?php } else { ?>
+                <div class="blog-feature no-image">
                   <div class="typeIcon">
-									<i class="fas fa-play">
-								</div>
-              </di>
-							<?php }
-               else { ?>
-                   <div class="blog-feature no-image">
-    								<div class="typeIcon">
-    									<i class="fas fa-download"></i>
-                    </div>
+                    <i class="fas fa-file"></i>
+                  </div>
 								</div>
 							<?php } ?>
 						<?php } ?>
 
 						<div class="blog-feed">
-
 							<section class="post-section">
 								<div class="entry-content">
-									<h3>	<?php the_title(); ?></h3>
+									<h3><?php the_title(); ?></h3>
 									<?php the_excerpt(); ?>
 								</div>
 							</section>
 						</div>
 
-                            <div class="post-footer">
-								<?php
-                            if(get_field('video_link',$post->ID)){
-                                $vidlink = get_field('video_link',$post->ID);
-                                ?>
-                                    <a onclick="linkVideo('<?php echo $vidlink; ?>?rel=0&autoplay=1'); ga('<?php the_title(); ?>');"  style="cursor: pointer;">Watch Video</a>
-                                <?php
-                            }
-                            else if (get_field('file',$post->ID)){
+            <div class="post-footer">
+              <?php
+              if(get_field('video_link',$post->ID)){
+                $vidlink = get_field('video_link',$post->ID);
+                ?>
+                <p><strong>Watch Video</strong></p>
 
-                                $downloadLink = get_field('file',$post->ID);
-                                ?>
-                                    <a>Download</a>
-                                <?php
-                            }
-                            else if (get_field('link',$post->ID)){
-                                $theLink = get_field('link',$post->ID);
-                                ?>
-                                    <a>Go To Link</a>
-                                <?php
-                            }
-                            else if (get_field('email_text',$post->ID)){
-                                $emailLink = get_field('email_text',$post->ID);
-                                ?>
-                                    <a>Get Email</a>
-                                <?php
-                            }
-                            ?>
-							</div>
+                <?php } else if (get_field('file',$post->ID)){
+                  ?>
+                    <p><strong>Download</strong></p>
+                  <?php } else if (get_field('link',$post->ID)){
+                    ?>
+                      <p><strong>Go To Link</strong></p>
 
-					</article>
-				</div><!-- data id --><!-- post class -->
+                    <?php } else {
+                      ?>
+                        <p><strong>Go To Document</strong></p>
+                      <?php } ?>
+              </div>
+            </article>
+          </a>
+          </div><!-- data id --><!-- post class -->
 
-			<?php
-
-				 }
-
-				}
-
-			endwhile;
+			<?php }
+    } endwhile;
 			wp_reset_query();
 			wp_reset_postdata(); ?>
-            <?php } else { ?>
 
-				<div class="text-center">No Resources match your search criteria. Please try changing the filters.</div>
+    <?php } else { ?>
+      <div class="text-center">No Resources match your search criteria. Please try changing the filters.</div>
+    <?php } ?>
 
-			<?php } ?>
-        </div>
-    <?php
-    } else if($_POST['pullType'] == "updateTags"){
+  </div>
+    <?php } else if($_POST['pullType'] == "updateTags"){
 
 		/*************************
 		****** UPDATE TAGS *******
@@ -391,9 +343,8 @@
 				<?php }
 			}
 		} else { ?>
-			<div class="item">No tags found; please try a different search.</div>
+			<div class="item">No tags found.</div>
 		<?php } ?>
-		<!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js'></script> -->
 
 		<script type="text/javascript">
 				function link(link)
@@ -402,7 +353,7 @@
 				}
 				function linkVideo(vid)
 				{
-                    console.log(vid);
+          console.log(vid);
 					jQuery.magnificPopup.open({
 						items: {
 							src: vid,
@@ -413,16 +364,14 @@
 				}
 				function ga(title)
 				{
-                    // ga('send', 'event', 'Web Application', 'Resource', title)
-                    gtag('event', 'Resources', {
-                        'event_category': 'Resources',
-                        'event_label': title,
-                        'value': title
-                    });
-
+          gtag('event', 'Resources', {
+            'event_category': 'Resources',
+            'event_label': title,
+            'value': title
+          });
 				}
 		</script>
-		<!-- <input id="tagSearch" class="right" type="search" placeholder="Search" value="<?php //echo $_POST['tagValue']; ?>"/> -->
+
     <?php
     } else if($_POST['pullType'] == "updateSidebar"){
 
@@ -431,8 +380,6 @@
 		****************************/
 
 		$newTags = getTags($args, $tagSearchString);
-
-
 		$sliced_tags = array_slice($newTags,0,6);
 
 		if($sliced_tags){
@@ -450,21 +397,6 @@
 		}
     }
 
-    /***************************
-    ***** DATABASE LOGGING *****
-    ***************************/
-
-    //only run when the search results are displayed, to avoid mis-counting the tag/sidebar updates
-    // if($_POST['pullType'] == "results"){
-    //     require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-config.php');
-    //     require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
-    //     global $wpdb;
-
-    //     $pageName = "Resource Library";
-    //     $values = '{"resource_categories": "'. ( $resource_categories ? implode(", ", $resource_categories) : "" ) .'", "groups": "'. ( $groups ? implode(", ", $groups) : "" ) .'", "types": "'.( $types ? implode(", ", $types) : "" ) .'", "tags": "'. ( $tags ? implode(", ", $tags) : "" ) .'", "titleSearch": "'. ( $titleSearchString ? $titleSearchString : "" ) .'", "tagSearch": "'. ( $tagSearchString ? $tagSearchString : "" ) .'"}';
-
-    // }
-
 //get the tags for the searched posts
 function getTags( $args, $tagSearchString ) {
     $searchLoop = new WP_Query( $args );
@@ -479,7 +411,6 @@ function getTags( $args, $tagSearchString ) {
                 if(!isInMultiArray($searchTags, "term_id", $tag->term_id )){
                     if($tagSearchString){
                         //if user is searching for a specific tag name, filter by that
-                        //echo "name: ".$tag->name." search: ".$tagSearchString." strpos: ".strpos($tag->name, $tagSearchString)."<br>";
                         if(is_numeric(strpos(strtolower($tag->name), strtolower($tagSearchString)))){
                             $searchTags[] = $tag;
                         }
@@ -491,12 +422,11 @@ function getTags( $args, $tagSearchString ) {
 
         endwhile; wp_reset_query(); wp_reset_postdata();
     } else { ?>
-        <!--<div class="text-center">No tags match your search criteria.</div>-->
+        <div class="text-center">No tags match your search criteria.</div>
     <?php }
 
     return sort_posts( $searchTags, 'term_id', 'count', $order = 'DESC', $unique = true );
 }
-
 
 //function used for array validation
 function isInMultiArray($array, $field, $position) {
@@ -546,3 +476,79 @@ class Sort_Posts {
 	}
 }
 ?>
+
+<script>
+//magnific
+function extendMagnificIframe(){
+
+   var $start = 0;
+   var $iframe = {
+       markup: '<div class="mfp-iframe-scaler">' +
+               '<div class="mfp-close"></div>' +
+               '<iframe class="mfp-iframe" frameborder="0" aria-label="video popup" allowfullscreen></iframe>' +
+               '</div>' +
+               '<div class="mfp-bottom-bar">' +
+               '<div class="mfp-title"></div>' +
+               '</div>',
+       patterns: {
+           youtube: {
+               index: 'youtu',
+               id: function(url) {
+
+                   var m = url.match( /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/ );
+                   if ( !m || !m[1] ) return null;
+
+                       if(url.indexOf('t=') != - 1){
+
+                           var $split = url.split('t=');
+                           var hms = $split[1].replace('h',':').replace('m',':').replace('s','');
+                           var a = hms.split(':');
+
+                           if (a.length == 1){
+
+                               $start = a[0];
+
+                           } else if (a.length == 2){
+
+                               $start = (+a[0]) * 60 + (+a[1]);
+
+                           } else if (a.length == 3){
+
+                               $start = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+
+                           }
+                       }
+
+                       var suffix = '?autoplay=1';
+
+                       if( $start > 0 ){
+
+                           suffix = '?start=' + $start + '&autoplay=1';
+                       }
+
+                   return m[1] + suffix;
+               },
+               src: '//www.youtube.com/embed/%id%'
+           },
+           vimeo: {
+               index: 'vimeo.com/',
+               id: function(url) {
+                   var m = url.match(/(https?:\/\/)?(www.)?(player.)?vimeo.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/);
+                   if ( !m || !m[5] ) return null;
+                   return m[5];
+               },
+               src: '//player.vimeo.com/video/%id%?autoplay=1'
+           }
+       }
+   };
+
+   return $iframe;
+
+}
+
+$('.popup-video').magnificPopup({
+   type: 'iframe',
+   iframe: extendMagnificIframe()
+});
+
+ </script>

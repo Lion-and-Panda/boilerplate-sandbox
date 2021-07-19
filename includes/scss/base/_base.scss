@@ -408,7 +408,7 @@ padding: $padding-flat ;
     width: 1px;
 }
 
-a, button, input[type=submit], .modal-content {
+a, button, input[type=submit], input[type=checkbox], .modal-content {
 	&:focus-visible {
 		outline: blue solid 4px !important;
 	}

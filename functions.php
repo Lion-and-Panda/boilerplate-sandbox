@@ -8,7 +8,6 @@ wp_enqueue_style( 'style', get_stylesheet_uri() );
 //---------------------  // Scripts // ---------------------//
 	wp_enqueue_script('theme_custom_js', get_template_directory_uri() . '/includes/js/theme.js', false, false, false);	// get general js for theme
 	wp_enqueue_script('theme_menu_js', get_template_directory_uri() . '/includes/js/menu.js', false, false, false);	// scripts for the mobile menu
-
 //---------------------  // Fonts // ---------------------//
 	//Adobe Fonts
 	//wp_enqueue_style( 'adobe_edge_web_fonts', 'https://use.typekit.net/rcl6gdl.css' );
@@ -116,7 +115,7 @@ function replace_jquery() {
 	if (!is_admin()) {
 		// comment out the next two lines to load the local copy of jQuery
 		wp_deregister_script('jquery');
-		wp_register_script('jquery', 'https://code.jquery.com/jquery-3.6.0.min.js', false, '1.11.3');
+		wp_register_script('jquery', 'https://code.jquery.com/jquery-3.6.0.min.js', false, '3.6.0');
 		wp_enqueue_script('jquery');
 	}
 }
@@ -139,4 +138,26 @@ function mytheme_add_woocommerce_support() {
 }
 add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
 
-//---------------------  // Register Custom Post Types // ---------------------/
+//---------------------  // Resource Library // ---------------------/
+
+//register custom post type
+require get_template_directory() . '/includes/content/resource-library/post-type-resources.php';
+//regiester custom blocks for resource library
+require get_template_directory() . '/includes/content/resource-library/register-blocks-resources.php';
+//resource library base styles
+function resource_styles() {
+wp_enqueue_style( 'resources', get_template_directory_uri() . '/includes/content/resource-library/includes/css/resources.css',false,'1.1','all');
+}
+add_action( 'wp_enqueue_scripts', 'resource_styles' );
+//trucate function
+function truncate($string,$length=20,$append="&hellip;") {
+	$string = trim($string);
+
+	if(strlen($string) > $length) {
+	  $string = wordwrap($string, $length);
+	  $string = explode("\n", $string, 2);
+	  $string = $string[0] . $append;
+	}
+
+	return $string;
+}
