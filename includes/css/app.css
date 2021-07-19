@@ -19097,45 +19097,93 @@ img.mfp-img {
 
 .numberCircle {
   line-height: 0;
-  font-size: 32px;
-  margin-right: 17px;
-}
-.numberCircle.letter {
-  font-size: 24px;
-  margin-left: 2rem;
-}
-.numberCircle.roman {
-  font-size: 22px;
-  border: 0;
-  margin-left: 4rem;
-}
-
-.arrow {
-  background-color: #240B0F;
-  color: #FAF1D5;
-}
-.arrow .numberCircle {
   border-radius: 20%;
+  font-size: 32px;
+  text-align: center;
   background-color: #0D0C09;
   color: #FAF1D5;
   border: 20px solid #0D0C09;
   border-bottom: 13px solid #0D0C09;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  margin-right: 17px;
   box-shadow: 2px 1px 5px #0D0C09;
-  margin-left: 0;
 }
-.arrow .numberCircle.letter {
+.numberCircle.letter {
   border-radius: 0;
+  font-size: 24px;
   border: 14px solid #0D0C09;
   box-shadow: 2px 1px 5px #0D0C09;
-  margin-left: 0;
 }
-.arrow .numberCircle.roman {
+.numberCircle.roman {
+  font-size: 22px;
   border: 0;
   background-color: initial;
   margin-left: 17px;
   box-shadow: none;
+}
+
+aside.arrow {
+  color: #FAF1D5;
+  font: 100 16px/25px "Roboto", sans-serif;
+  line-height: 50px;
+  position: relative;
+  border-left: 3px solid #240B0F;
+  border-right: 1px solid #240B0F;
+}
+aside.arrow.arrow {
+  background-color: #240B0F;
+}
+aside.arrow.arrow:after {
+  border-width: 25px 0 25px 25px;
+}
+aside.arrow.arrow:before {
+  border-color: #240B0F transparent;
+  left: -25px;
+}
+aside.arrow.arrow:after {
+  border-color: transparent #240B0F;
+  right: -25px;
+}
+
+aside.letter {
+  margin-left: 83px;
+  font-size: 16px;
+  border-left: 3px solid #4b171f;
+  border-right: 1px solid #4b171f;
+}
+aside.letter.arrow {
+  background-color: #4b171f;
+}
+aside.letter.arrow:before {
+  border-color: #4b171f transparent;
+}
+aside.letter.arrow:after {
+  border-color: transparent #4b171f;
+}
+
+aside.roman {
+  border-left: 3px solid #992f40;
+  border-right: 1px solid #992f40;
+  margin-left: 125px;
+}
+aside.roman.arrow {
+  background-color: #992f40;
+}
+aside.roman.arrow:before {
+  border-color: #992f40 transparent;
+}
+aside.roman.arrow:after {
+  border-color: transparent #992f40;
+}
+
+aside:before, aside:after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-style: solid;
+  border-width: 0;
 }
 
 /*-----------------------------------------------------------------------------------*/

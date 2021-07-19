@@ -1,7 +1,3 @@
-$color-arrow: $color-1;
-$color-arrow-2: lighten($color-arrow, 10%);
-$color-arrow-3: lighten($color-arrow, 30%);
-
 .content {
   margin-bottom: 0 !important;
   &.numeral {
@@ -14,49 +10,92 @@ $color-arrow-3: lighten($color-arrow, 30%);
 
 .numberCircle {
     line-height: 0;
+    border-radius: 20%;
     font-size: 32px;
+    text-align: center;
+    background-color: $black;
+    color: $white;
+    border: 20px solid $black;
+    border-bottom: 13px solid $black;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
     margin-right: 17px;
+    box-shadow: 2px 1px 5px $black;
+
 
     &.letter {
+      border-radius: 0;
       font-size: 24px;
-      margin-left: 2rem;
+      border: 14px solid $black;
+      box-shadow: 2px 1px 5px $black;
     }
 
     &.roman {
       font-size: 22px;
       border: 0;
-      margin-left: 4rem;
+      background-color: initial;
+      margin-left: 17px;
+      box-shadow: none;
     }
 }
 
-.arrow {
-  background-color: $color-arrow;
+aside.arrow{
   color: $white;
+  font: 100 16px/25px $primary-font;
+  line-height: 50px;
+  position: relative;
+  border-left: 3px solid $primary-color;
+  border-right: 1px solid $primary-color;
 
-  .numberCircle {
-      border-radius: 20%;
-      background-color: $black;
-      color: $white;
-      border: 20px solid $black;
-      border-bottom: 13px solid $black;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-      box-shadow: 2px 1px 5px $black;
-      margin-left: 0;
-
-      &.letter {
-        border-radius: 0;
-        border: 14px solid $black;
-        box-shadow: 2px 1px 5px $black;
-        margin-left: 0;
-      }
-
-      &.roman {
-        border: 0;
-        background-color: initial;
-        margin-left: 17px;
-        box-shadow: none;
-      }
+  &.arrow {
+    background-color: $primary-color;
+    &:after {
+      border-width: 25px 0 25px 25px;
+    }
+    &:before {
+      border-color: $primary-color transparent;
+      left: -25px;
+    }
+    &:after {
+      border-color: transparent $color-arrow;
+      right: -25px;
+    }
   }
-
+}
+aside.letter {
+  margin-left: 83px;
+  font-size: 16px;
+  border-left: 3px solid $primary-color-lighten;
+  border-right: 1px solid $primary-color-lighten;
+  &.arrow {
+    background-color: $primary-color-lighten;
+    &:before {
+      border-color: $primary-color-lighten transparent;
+    }
+    &:after {
+      border-color: transparent $primary-color-lighten
+    }
+  }
+}
+aside.roman {
+  border-left: 3px solid $primary-color-lighten-2;
+  border-right: 1px solid $primary-color-lighten-2;
+  margin-left: 125px;
+  &.arrow {
+    background-color: $primary-color-lighten-2;
+    &:before {
+      border-color: $primary-color-lighten-2 transparent;
+    }
+    &:after {
+      border-color: transparent $primary-color-lighten-2;
+    }
+  }
+}
+aside:before, aside:after {
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-style: solid;
+  border-width: 0;
 }
