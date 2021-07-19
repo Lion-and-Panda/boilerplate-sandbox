@@ -149,3 +149,15 @@ function resource_styles() {
 wp_enqueue_style( 'resources', get_template_directory_uri() . '/includes/content/resource-library/includes/css/resources.css',false,'1.1','all');
 }
 add_action( 'wp_enqueue_scripts', 'resource_styles' );
+//trucate function
+function truncate($string,$length=20,$append="&hellip;") {
+	$string = trim($string);
+
+	if(strlen($string) > $length) {
+	  $string = wordwrap($string, $length);
+	  $string = explode("\n", $string, 2);
+	  $string = $string[0] . $append;
+	}
+
+	return $string;
+}
