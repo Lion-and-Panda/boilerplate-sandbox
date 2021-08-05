@@ -1,0 +1,20 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "sandbox.lionandpanda.com",
+  "target": "/var/www/vhosts/sandbox.lionandpanda.com/httpdocs/wp-content/themes/lpboilerplate",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "intern",
+  "keyfile": "C:\\Users\\cwlut\\Desktop\\lionandpanda\\key\\private.ppk",
+  "watch": [
+    "/includes/css/app.css",
+    "/includes/css/app.css.map",
+    "/includes/content/resource-library/includes/css/resources.css",
+    "/includes/content/resource-library/includes/css/resources.css.map"
+  ],
+  "transport": "scp"
+}

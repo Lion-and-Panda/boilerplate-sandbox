@@ -1,0 +1,51 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Layouts
+/*-----------------------------------------------------------------------------------*/
+
+// breakpoints
+$SS:     	450px;
+$S:     	650px;
+$SMPIXEL:   767px;
+$SM:    	768px;
+$M:    		960px;
+$ML:    	1020px;
+$L:  		1187px;
+
+// media queries
+@mixin MQ($canvas) {
+
+	// MIN WIDTH
+	@if $canvas == S {
+		@media only screen and (min-width: $SS) { @content; }
+	}
+	@else if $canvas == M {
+		@media only screen and (min-width: $SM) { @content; }
+	}
+	@else if $canvas == L {
+		@media only screen and (min-width: $M) { @content; }
+	}
+
+
+	// MAX WIDTH
+	@else if $canvas == XLXL {
+		@media only screen and (max-width: $L) { @content; }
+	}
+	@else if $canvas == XL {
+		@media only screen and (max-width: $ML) { @content; }
+	}
+	@else if $canvas == LL {
+		@media only screen and (max-width: $M) { @content; }
+	}
+	@else if $canvas == MM {
+		@media only screen and (max-width: $SM) { @content; }
+	}
+	@else if $canvas == PIXEL {
+		@media only screen and (max-width: $SMPIXEL) { @content; }
+	}
+	@else if $canvas == SM {
+		@media only screen and (max-width: $S) { @content; }
+	}
+	@else if $canvas == SS {
+		@media only screen and (max-width: $SS) { @content; }
+	}
+}

@@ -1,0 +1,421 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Base css
+/*-----------------------------------------------------------------------------------*/
+
+//home page only styles
+.home {
+	#wrapper {
+		margin-top: 0px; //place content under header
+	}
+}
+
+html, body {
+	height: 100%;
+}
+
+html {
+    font-size: 18px;
+    color: $font-color;
+    font-family: $primary-font;
+		scroll-behavior: smooth;
+}
+
+body {
+	letter-spacing: 0.04em;
+	margin: 0;
+	color: $font-color;
+	font: $Regular 16px/2em $primary-font;
+	background: white;
+	min-width: 100%;
+}
+
+#wrapper {
+	background: white;
+	overflow: hidden;
+	margin-top: 80px;
+	@include MQ(SM) {
+		margin-top: 70px;
+	}
+}
+
+.container {
+	width: $container-width;
+	max-width: $container-max-width;
+  margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+}
+
+.container-full {
+	width:90%;
+	max-width: 90%;
+  margin: 0px auto;
+}
+
+section.is-narrow {
+	width: 80%;
+	max-width: 1600px;
+	margin: 40px auto;
+
+	@include MQ(SM) {
+		width: 90%
+	}
+}
+
+// group standard WP gutenburg blocks and give the group this class to wrap it in a container with small padding
+.wp-block {
+	@extend .container;
+	@extend .is-small;
+}
+
+.flex {
+	display: -webkit-flex;
+	display: flex;
+	overflow: hidden;
+	height: 100%;
+	.flex-box {
+		height: 100%;
+		flex: 1;
+		min-height: 100vh;
+	}
+}
+
+.fill {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+	img {
+	    flex-shrink: 0;
+	    min-width: 100%;
+	    height: auto;
+	    min-height:100%
+    }
+}
+
+.hide {
+	display: none;
+	opacity: 0;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.centered {
+	text-align: center;
+}
+.aligncenter {//WordPress's center align class
+	text-align: center;
+	display: block;
+	margin: auto;
+}
+
+.clearfix {
+  overflow: auto;
+    &:after {
+  content: "";
+	  clear: both;
+	  display: table;
+	}
+}
+
+.no-br {
+	white-space: nowrap;
+}
+
+.relative {
+	position: relative;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.hundred {
+	width: 100%;
+	height: auto;
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+// section paddings
+.is-flat {
+padding: $padding-flat ;
+}
+
+.is-small {
+	padding: $padding-small;
+
+	@include MQ(SM) {
+		padding: 25px 0px;
+	}
+}
+
+.is-medium {
+	padding: $padding-medium;
+
+	@include MQ(SM) {
+		padding: 50px 0px;
+	}
+}
+
+.is-large {
+	padding: $padding-large;
+
+	@include MQ(SM) {
+		padding: 75px 0px;
+	}
+}
+
+.margin-flat {
+	margin: $margin-flat !important;
+}
+
+.margin-small {
+	margin: $margin-small !important;
+}
+
+.margin-medium {
+	margin: $margin-medium !important;
+}
+
+.margin-large {
+	margin: $margin-large !important;
+}
+
+//background image positions
+.bgposition {
+	&-is-cc {
+		background-position: center center !important;
+	}
+	&-is-ct {
+		background-position: center top !important;
+	}
+	&-is-cb {
+		background-position: center bottom !important;
+	}
+	&-is-lt {
+		background-position: left top !important;
+	}
+	&-is-lc {
+		background-position: left center !important;
+	}
+	&-is-lb {
+		background-position: left bottom !important;
+	}
+	&-is-rt {
+		background-position: right top !important;
+	}
+	&-is-rc {
+		background-position: right center !important;
+	}
+	&-is-rb {
+		background-position: right bottom !important;
+	}
+}
+
+// Block Aligments
+.align-left {
+	float: left;
+	text-align: left;
+}
+
+.align-right {
+	float: right;
+	text-align: right;
+}
+
+.align-center {
+	float: none;
+	text-align: center;
+	display: table;
+  margin: 0px auto;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.alignleft {
+     display: inline;
+    float: left;
+    margin-right: 20px;
+}
+
+.alignright {
+     display: inline;
+    float: right;
+    margin-left: 20px;
+}
+
+.reverse-row-order {
+	display: flex;
+	flex-direction: row-reverse;
+
+	@include MQ(SM) {
+			display: block;
+	}
+}
+
+// Overlays
+.overlay {
+	position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: .8;
+}
+
+// bring all content above overlays
+.zindex-1 {
+	 z-index: 1;
+}
+
+.zindex-2 {
+	 z-index: 2;
+}
+
+.zindex-3 {
+	 z-index: 3;
+}
+
+.zindex-4 {
+	 z-index: 4;
+}
+
+.zindex-5 {
+	 z-index: 5;
+}
+
+// Invert Colors
+.inverted {
+	h1, h2, h3, h4, h5, h6, p, a, i, svg, span, .slick-prev:before, .slick-next:before {
+		color: white !important;
+	}
+		a:hover {
+			color: rgba(white,.8);
+		}
+		.slick-prev, .slick-next {
+      background: $black;
+    }
+		.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+		  background: rgba($black, .8);
+		}
+}
+
+.dropshadow {
+	box-shadow: $box-shadow;
+}
+
+.cover {
+	@include coverBackgound;
+}
+
+.paraxify {
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+.cookie-banner {
+  position: fixed;
+	z-index: 9999;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: $white;
+  box-shadow: $box-shadow;
+}
+
+.modal {
+	z-index: 1000;
+
+.modal-content {
+		&::-webkit-scrollbar {
+	  width: 1em;
+	}
+
+		&::-webkit-scrollbar-track {
+		  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		}
+
+		&::-webkit-scrollbar-thumb {
+		  background-color: darkgrey;
+		  outline: 1px solid slategrey;
+		}
+}
+}
+
+//accessabilty
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+
+ 	&:focus {
+		background-color: #f1f1f1;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px rgba($black,.25);
+		clip: auto !important;
+		clip-path: none;
+		color: blue;
+		display: block;
+		font-size: 14px;
+		font-size: 0.875rem;
+		font-weight: bold;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000;
+		border: solid 2px blue;
+		outline: none;
+		/* Above WP toolbar. */
+	}
+	&:focus-visible {
+		outline: 0 !important;
+	}
+}
+
+//visually hide things so only screen readers will see them
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+a, button, input[type=submit], input[type=checkbox], .modal-content {
+	&:focus-visible {
+		outline: blue solid 4px !important;
+	}
+}
+
+input, textarea {
+	&:focus {
+		border: solid 2px $primary-color !important;
+	}
+}

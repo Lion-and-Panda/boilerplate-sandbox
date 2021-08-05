@@ -1,0 +1,42 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Logo Slider
+/*-----------------------------------------------------------------------------------*/
+.logoSlider {
+
+  .logoSlides {
+
+    .slick-track
+    {
+        display: flex !important;
+    }
+
+    .slick-slide
+    {
+        height: inherit !important;
+    }
+
+    .slide {
+    	height: 100% !important;
+    }
+
+
+    .slick-slide {
+      align-self: center;
+      padding: 0 40px;
+      img {
+        display: inline-block;
+        margin: auto;
+      }
+    }
+
+  }
+
+  .slick-prev {
+    left: -40px;
+  }
+
+  .slick-next {
+    right: -40px;
+  }
+
+}

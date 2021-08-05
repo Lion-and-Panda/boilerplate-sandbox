@@ -1,0 +1,39 @@
+/*-----------------------------------------------------------------------------------*/
+/*	Video/Image and Copy Block
+/*-----------------------------------------------------------------------------------*/
+.viCopy {
+    .hero-body {
+        z-index: 2;
+    }
+    .sub-title {
+        color: $font-color;
+    }
+    .image-container {
+        position: relative;
+
+        img {
+          @include MQ(SM) {
+            width: 100% !important;
+            display: block;
+            margin: auto;
+
+          }
+        }
+    }
+    .is-centered  {
+        .column {
+            width: 100%;
+            flex-basis: 0;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+    }
+
+	.hero-button {
+
+		.button {
+			margin-right: 20px;
+		}
+	}
+
+}

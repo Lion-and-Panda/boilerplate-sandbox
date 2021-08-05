@@ -1,0 +1,34 @@
+/*-----------------------------------------------------------------------------------*/
+/* Forms
+/*-----------------------------------------------------------------------------------*/
+form {
+
+    input[type=text], input, select, textarea {
+        background: transparent;
+        border: solid 1px rgba(black,.2);
+        font-size: 1rem !important;
+        padding: 10px !important;
+    		border-radius: 6px;
+    		box-shadow: none;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            text-transform: none;
+            letter-spacing: .8px;
+            color: rgba($font-color,.6);
+            font-size: 1rem !important;
+        }
+    }
+
+    label, .gfield_label  {
+        font-size: 1rem !important;
+        font-weight: $Bold !important;
+    }
+
+    .button {
+        padding: 0px;
+    }
+}
